@@ -10,6 +10,7 @@ const customJestConfig = {
   moduleDirectories: ['node_modules', '<rootDir>/'],
   testEnvironment: 'jest-environment-jsdom',
   collectCoverageFrom: ['src/**/*.tsx', '!src/**/*.spec.tsx'],
+  coveragePathIgnorePatterns: ['src/**/index.js'],
   coverageThreshold: {
     global: {
       branches: 90,
