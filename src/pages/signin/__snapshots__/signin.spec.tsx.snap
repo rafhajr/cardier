@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Signin /> should render signin page correctly 1`] = `
+<div>
+  <div
+    class="css-1xjsnt2"
+  >
+    <form
+      class="css-1xyw26x"
+    >
+      <img
+        alt="logo"
+        class="chakra-image css-gb7ck4"
+        src="logo.png"
+      />
+      <div
+        class="chakra-stack css-egoftb"
+      >
+        <div
+          class="chakra-form-control css-1kxonj9"
+          role="group"
+        >
+          <label
+            class="chakra-form__label css-pk5tju"
+            for="email"
+            id="field-1-label"
+          >
+            E-mail
+          </label>
+          <input
+            class="chakra-input css-uxk25m"
+            id="email"
+            name="email"
+            type="email"
+          />
+        </div>
+        <div
+          class="chakra-form-control css-1kxonj9"
+          role="group"
+        >
+          <label
+            class="chakra-form__label css-pk5tju"
+            for="email"
+            id="field-2-label"
+          >
+            Senha
+          </label>
+          <input
+            class="chakra-input css-uxk25m"
+            id="password"
+            name="password"
+            type="password"
+          />
+        </div>
+      </div>
+      <button
+        class="chakra-button css-1y4zvm6"
+        type="submit"
+      >
+        Entrar
+      </button>
+    </form>
+  </div>
+</div>
+`;

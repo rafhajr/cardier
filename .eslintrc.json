@@ -14,11 +14,20 @@
       "tsx": true
     }
   },
+  "overrides": [
+    {
+      "files": ["**/*.spec.ts", "**/*.spec.tsx"],
+      "env": {
+        "jest": true
+      }
+    }
+  ],
   "rules": {
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
     "react-hooks/rules-of-hooks": "error",
     "react/react-in-jsx-scope": "off",
+    "no-undef": "off",
     "react-hooks/exhaustive-deps": "warn",
     "indent": ["error", 2]
   }

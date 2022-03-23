@@ -1,10 +1,23 @@
+import { NextPage } from 'next'
 import type { AppProps } from 'next/app'
+import React from 'react'
 import { AppProvider } from 'src/contexts'
 
-function MyApp({ Component, pageProps }: AppProps) {
+type NextPageWithLayout = NextPage & {
+  layout?: () => JSX.Element
+}
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout
+}
+
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  const CustomLayout = Component.layout ?? React.Fragment
   return (
     <AppProvider>
-      <Component {...pageProps} />;
+      <CustomLayout>
+        <Component {...pageProps} />
+      </CustomLayout>
     </AppProvider>
   )
 }

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Input/> should render input correctly 1`] = `
+<div>
+  <div
+    class="chakra-form-control css-1kxonj9"
+    role="group"
+  >
+    <label
+      class="chakra-form__label css-pk5tju"
+      for="email"
+      id="field-1-label"
+    >
+      Nome
+    </label>
+    <input
+      class="chakra-input css-uxk25m"
+      id="name"
+    />
+  </div>
+</div>
+`;

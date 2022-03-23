@@ -9,8 +9,12 @@ const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   moduleDirectories: ['node_modules', '<rootDir>/'],
   testEnvironment: 'jest-environment-jsdom',
-  collectCoverageFrom: ['src/**/*.tsx', '!src/**/*.spec.tsx'],
-  coveragePathIgnorePatterns: ['src/**/index.js'],
+  collectCoverageFrom: [
+    'src/**/*.tsx',
+    '!src/**/*.spec.tsx',
+    '!src/pages/_app.tsx',
+    '!src/pages/index.tsx',
+  ],
   coverageThreshold: {
     global: {
       branches: 90,
@@ -27,14 +31,15 @@ const customJestConfig = {
     '^.+\\.(png|jpg|jpeg|gif|webp|avif|ico|bmp|svg)$/i': `<rootDir>/__mocks__/fileMock.js`,
 
     // Handle module aliases
-    '^@/components/(.*)$': '<rootDir>/components/$1',
-    '^@/assets/(.*)$': '<rootDir>/assets/$1',
-    '^@/constants/(.*)$': '<rootDir>/constants/$1',
-    '^@/contexts/(.*)$': '<rootDir>/contexts/$1',
-    '^@/lib/(.*)$': '<rootDir>/lib/$1',
-    '^@/pages/(.*)$': '<rootDir>/pages/$1',
-    '^@/services/(.*)$': '<rootDir>/services/$1',
-    '^@/utils/(.*)$': '<rootDir>/utils/$1',
+    '^@/components/(.*)$': '<rootDir>/src/components/$1',
+    '^@/assets/(.*)$': '<rootDir>/src/assets/$1',
+    '^@/constants/(.*)$': '<rootDir>/src/constants/$1',
+    '^@/contexts/(.*)$': '<rootDir>/src/contexts/$1',
+    '^@/lib/(.*)$': '<rootDir>/src/lib/$1',
+    '^@/pages/(.*)$': '<rootDir>/src/pages/$1',
+    '^@/services/(.*)$': '<rootDir>/src/services/$1',
+    '^@/utils/(.*)$': '<rootDir>/src/utils/$1',
+    '^@/styles/(.*)$': '<rootDir>/src/styles/$1',
   },
   testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/'],
   testEnvironment: 'jsdom',
