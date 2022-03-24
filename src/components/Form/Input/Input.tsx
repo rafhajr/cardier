@@ -23,7 +23,6 @@ export function Input({
   required = false,
   ...rest
 }: InputProps) {
-  console.log(errors)
   return (
     <FormControl>
       {label && (

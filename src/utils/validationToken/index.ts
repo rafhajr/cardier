@@ -1,0 +1,1 @@
+export { validationToken } from './validationToken'

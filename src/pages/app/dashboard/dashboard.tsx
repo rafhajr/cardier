@@ -1,7 +1,8 @@
+import { handleSignOut } from '@/contexts/auth'
 import { AuthenticatedLayout } from 'src/layouts/AuthenticatedLayout'
 
 export function Dashboard() {
-  return <h1>Dashboard</h1>
+  return <button onClick={handleSignOut}>logout</button>
 }
 
 Dashboard.layout = AuthenticatedLayout

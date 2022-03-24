@@ -1,19 +1,32 @@
 import { Input } from '@/components/Form/Input'
 import { Button, Flex, Image, Stack } from '@chakra-ui/react'
-import { NextPage } from 'next'
-import { useForm } from 'react-hook-form'
+import { GetServerSideProps, NextPage } from 'next'
+import { parseCookies } from 'nookies'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { useAuth } from 'src/hooks'
 
-export const SignIn: NextPage = () => {
+type FormProps = {
+  email: string
+  password: string
+}
+
+const SignIn: NextPage = () => {
+  const { handleSignIn, loading } = useAuth()
+
   const {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm()
+  } = useForm<FormProps>()
+
+  const onSubmit: SubmitHandler<FormProps> = (data) => {
+    handleSignIn(data)
+  }
 
   return (
     <Flex w="100vw" h="100vh" align="center" justify="center">
       <Flex
-        onSubmit={handleSubmit(() => {})}
+        onSubmit={handleSubmit(onSubmit)}
         as="form"
         w="100%"
         maxW={360}
@@ -35,17 +48,41 @@ export const SignIn: NextPage = () => {
           <Input
             errors={errors}
             register={register}
-            required
             name="password"
             label="Senha"
             type="password"
           />
         </Stack>
 
-        <Button type="submit" mt="6" colorScheme="orange" size="md">
+        <Button
+          isLoading={loading}
+          type="submit"
+          mt="6"
+          colorScheme="orange"
+          size="md"
+        >
           Entrar
         </Button>
       </Flex>
     </Flex>
   )
 }
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const cookies = parseCookies(ctx)
+
+  if (cookies['@maral.token']) {
+    return {
+      redirect: {
+        destination: '/app/dashboard',
+        permanent: false,
+      },
+    }
+  }
+
+  return {
+    props: {},
+  }
+}
+
+export default SignIn
