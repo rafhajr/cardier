@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> should render correctly 1`] = `
+<div>
+  <header
+    class="css-5tnzri"
+  >
+    <button
+      aria-label="Open navigation"
+      class="chakra-button css-10fhv4q"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        class="chakra-icon css-13otjrl"
+        fill="currentColor"
+        focusable="false"
+        height="1em"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g>
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+          <path
+            d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"
+          />
+        </g>
+      </svg>
+    </button>
+    <img
+      alt="logo"
+      class="chakra-image css-xos48b"
+      src="../logo.png"
+    />
+    <div
+      class="css-70qvj9"
+    >
+      <div
+        class="chakra-stack css-zrx1dy"
+      >
+        <svg
+          class="chakra-icon css-1cv0b1u"
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g>
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+            <path
+              d="M18 8h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1h2V7a6 6 0 1 1 12 0v1zM5 10v10h14V10H5zm6 4h2v2h-2v-2zm-4 0h2v2H7v-2zm8 0h2v2h-2v-2zm1-6V7a4 4 0 1 0-8 0v1h8z"
+            />
+          </g>
+        </svg>
+        <svg
+          class="chakra-icon css-1cv0b1u"
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g>
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+            <path
+              d="M4 18h2v2h12V4H6v2H4V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3zm2-7h7v2H6v3l-5-4 5-4v3z"
+            />
+          </g>
+        </svg>
+      </div>
+      <div
+        class="css-70qvj9"
+      >
+        <span
+          class="chakra-avatar css-nxs594"
+        >
+          <svg
+            aria-label=" avatar"
+            class="chakra-avatar__svg css-16ite8i"
+            role="img"
+            viewBox="0 0 128 128"
+          >
+            <path
+              d="M103,102.1388 C93.094,111.92 79.3504,118 64.1638,118 C48.8056,118 34.9294,111.768 25,101.7892 L25,95.2 C25,86.8096 31.981,80 40.6,80 L87.4,80 C96.019,80 103,86.8096 103,95.2 L103,102.1388 Z"
+              fill="currentColor"
+            />
+            <path
+              d="M63.9961647,24 C51.2938136,24 41,34.2938136 41,46.9961647 C41,59.7061864 51.2938136,70 63.9961647,70 C76.6985159,70 87,59.7061864 87,46.9961647 C87,34.2938136 76.6985159,24 63.9961647,24"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+      </div>
+    </div>
+  </header>
+</div>
+`;

@@ -2,8 +2,8 @@ import { api } from '@/services/api'
 import { storageKey } from '@/utils/storageKey'
 import { useToast } from '@chakra-ui/react'
 import Router from 'next/router'
-import { destroyCookie, setCookie } from 'nookies'
-import { createContext, useCallback, useMemo, useState } from 'react'
+import { destroyCookie, parseCookies, setCookie } from 'nookies'
+import { createContext, useCallback, useEffect, useMemo, useState } from 'react'
 import {
   AuthContextData,
   AuthContextProviderProps,
@@ -25,6 +25,14 @@ function AuthContextProvider({ children }: AuthContextProviderProps) {
   const [user, setUser] = useState<UserProps>()
   const [loading, setLoading] = useState(false)
   const toast = useToast()
+
+  useEffect(() => {
+    const { '@maral.user': user } = parseCookies()
+
+    if (user) {
+      setUser(JSON.parse(user))
+    }
+  }, [])
 
   const handleSignIn = useCallback(
     async ({ email, password }: SignInCredentials): Promise<void> => {
