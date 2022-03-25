@@ -28,6 +28,7 @@
     "react-hooks/rules-of-hooks": "error",
     "react/react-in-jsx-scope": "off",
     "import/no-anonymous-default-export": "off",
+    "no-unused-vars": "off",
     "no-undef": "off",
     "react-hooks/exhaustive-deps": "warn",
     "indent": ["error", 2]

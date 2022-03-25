@@ -1,4 +1,5 @@
 import { prisma } from '@/lib/prisma'
+import { validationToken } from '@/utils/validationToken'
 import { NextApiRequest, NextApiResponse } from 'next'
 import * as Yup from 'yup'
 
@@ -7,9 +8,8 @@ const schema = Yup.object().shape({
   quantity: Yup.string().required('Quantidade é obrigatório'),
 })
 
-export default async function (req: NextApiRequest, res: NextApiResponse) {
+async function createProducts(req: NextApiRequest, res: NextApiResponse) {
   const { name, quantity } = req.body
-  // validationToken(req, res)
 
   try {
     await schema.validate(
@@ -38,5 +38,9 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     return res.status(201).json({})
   } catch (err) {
     res.status(500).json(err)
+  } finally {
+    prisma.$disconnect()
   }
 }
+
+export default validationToken(createProducts)
