@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FormLayout /> should render correctly 1`] = `
+<div>
+  <div
+    class="css-qqp9b6"
+  >
+    <h2
+      class="chakra-heading css-sxvlx"
+    >
+      Form Example
+    </h2>
+    <hr
+      aria-orientation="horizontal"
+      class="chakra-divider css-e44dav"
+    />
+    <h1>
+      Form
+    </h1>
+  </div>
+</div>
+`;

@@ -58,7 +58,7 @@ function AuthContextProvider({ children }: AuthContextProviderProps) {
       } catch (err) {
         toast({
           title: 'Error',
-          description: err?.response?.data.message,
+          description: err?.response?.data?.message,
           status: 'error',
           duration: 9000,
           isClosable: true,

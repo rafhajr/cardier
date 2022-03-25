@@ -1,5 +1,6 @@
 import { AppProvider } from '@/contexts/index'
-import { render } from '@testing-library/react'
+import { useBreakpointValue } from '@chakra-ui/react'
+import { render, screen } from '@testing-library/react'
 import { Header } from './Header'
 
 Object.defineProperty(window, 'matchMedia', {
@@ -16,14 +17,47 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 })
 
+jest.mock('@chakra-ui/react', () => ({
+  ...jest.requireActual('@chakra-ui/react'),
+  useBreakpointValue: jest.fn(),
+}))
+
+const renderComponent = () => {
+  return render(
+    <AppProvider>
+      <Header />
+    </AppProvider>
+  )
+}
+
 describe('<Header />', () => {
   it('should render correctly', () => {
-    const { container } = render(
-      <AppProvider>
-        <Header />
-      </AppProvider>
-    )
+    const { container } = renderComponent()
 
     expect(container).toMatchSnapshot()
+  })
+
+  it('should render mobile screen', () => {
+    renderComponent()
+    ;(useBreakpointValue as jest.Mock).mockReturnValue({
+      base: false,
+      lg: true,
+    })
+
+    expect(
+      screen.getByRole('button', {
+        name: /open navigation/i,
+      })
+    ).toBeInTheDocument()
+  })
+
+  it('should render mobile screen', () => {
+    renderComponent()
+    ;(useBreakpointValue as jest.Mock).mockReturnValue({
+      base: true,
+      lg: false,
+    })
+
+    expect(screen.getByRole('textbox')).toBeInTheDocument()
   })
 })

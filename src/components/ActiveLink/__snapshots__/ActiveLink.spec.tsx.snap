@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ActiveLink /> should be render correctly 1`] = `
+<div>
+  <p
+    class="chakra-text css-53blzj"
+  >
+    Link
+  </p>
+</div>
+`;

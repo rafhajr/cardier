@@ -36,7 +36,7 @@ exports[`<Header /> should render correctly 1`] = `
     <img
       alt="logo"
       class="chakra-image css-xos48b"
-      src="../logo.png"
+      src="/logo.png"
     />
     <div
       class="css-70qvj9"
@@ -90,6 +90,16 @@ exports[`<Header /> should render correctly 1`] = `
       <div
         class="css-70qvj9"
       >
+        <div
+          class="css-1dt8txd"
+        >
+          <p
+            class="chakra-text css-0"
+          />
+          <p
+            class="chakra-text css-lw47el"
+          />
+        </div>
         <span
           class="chakra-avatar css-nxs594"
         >
