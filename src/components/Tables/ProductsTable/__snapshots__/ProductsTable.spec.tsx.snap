@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PageWrapper /> should render correctly 1`] = `
+<div>
+  <table
+    class="chakra-table css-e4kp03"
+    role="table"
+  >
+    <thead
+      class="css-0"
+    >
+      <tr
+        class="css-0"
+        role="row"
+      >
+        <th
+          class="css-16juaxl"
+        >
+          <label
+            class="chakra-checkbox css-1uiwwan"
+          >
+            <input
+              class="chakra-checkbox__input"
+              style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+              type="checkbox"
+              value=""
+            />
+            <span
+              aria-hidden="true"
+              class="chakra-checkbox__control css-qlgo61"
+            />
+          </label>
+        </th>
+        <th
+          class="css-1ednkar"
+        >
+          Nome
+        </th>
+        <th
+          class="css-1ednkar"
+        >
+          <p
+            class="chakra-text css-xi606m"
+          >
+            Quantidade
+          </p>
+        </th>
+        <th
+          class="css-ai8wzg"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="css-0"
+    >
+      <tr
+        class="css-0"
+        role="row"
+      >
+        <td
+          class="css-dl2l4m"
+          role="gridcell"
+        >
+          <label
+            class="chakra-checkbox css-1uiwwan"
+          >
+            <input
+              class="chakra-checkbox__input"
+              style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+              type="checkbox"
+              value=""
+            />
+            <span
+              aria-hidden="true"
+              class="chakra-checkbox__control css-qlgo61"
+            />
+          </label>
+        </td>
+        <td
+          class="css-1n48h1c"
+          role="gridcell"
+        >
+          <p
+            class="chakra-text css-0"
+          >
+            John Doe
+          </p>
+        </td>
+        <td
+          class="css-1n48h1c"
+          role="gridcell"
+        >
+          <p
+            class="chakra-text css-xi606m"
+          >
+            100
+          </p>
+        </td>
+        <td
+          class="css-1k2clil"
+          role="gridcell"
+        >
+          <a
+            class="chakra-button css-406sl6"
+          >
+            <span
+              class="chakra-button__icon css-1wh2kri"
+            >
+              <svg
+                aria-hidden="true"
+                class="chakra-icon css-ky7im0"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g>
+                  <path
+                    d="M0 0h24v24H0z"
+                    fill="none"
+                  />
+                  <path
+                    d="M15.728 9.686l-1.414-1.414L5 17.586V19h1.414l9.314-9.314zm1.414-1.414l1.414-1.414-1.414-1.414-1.414 1.414 1.414 1.414zM7.242 21H3v-4.243L16.435 3.322a1 1 0 0 1 1.414 0l2.829 2.829a1 1 0 0 1 0 1.414L7.243 21z"
+                  />
+                </g>
+              </svg>
+            </span>
+            
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

@@ -7,7 +7,7 @@ interface PaginationItemProps {
 }
 
 export function PaginationItem({
-  isCurrent = false,
+  isCurrent,
   number,
   onPageChange,
 }: PaginationItemProps) {
@@ -23,7 +23,6 @@ export function PaginationItem({
           bgColor: 'orange.500',
           cursor: 'default',
         }}
-        onClick={() => onPageChange(number)}
       >
         {number}
       </Button>

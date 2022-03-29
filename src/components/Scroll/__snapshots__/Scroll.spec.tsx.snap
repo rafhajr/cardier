@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PageWrapper /> should render correctly 1`] = `
+<div>
+  <div
+    class="css-ztfaeq"
+  >
+    <h1>
+      ScrollComponent
+    </h1>
+  </div>
+</div>
+`;

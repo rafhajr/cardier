@@ -1,34 +1,26 @@
+import { PageWrapper } from '@/components/PageWrapper'
 import { Pagination } from '@/components/Pagination'
-import { ProductsTable } from '@/components/Tables/ProductsTable/ProductsTable'
+import { Scroll } from '@/components/Scroll'
+import { ProductsTable } from '@/components/Tables/ProductsTable'
+import { prisma } from '@/lib/prisma'
 import { useProducts } from '@/services/hooks/useProducts'
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Icon,
-  keyframes,
-  Spinner,
-  Text,
-  Tooltip,
-} from '@chakra-ui/react'
-import NextLink from 'next/link'
+import { Flex, Spinner, Text } from '@chakra-ui/react'
+import { Product } from '@prisma/client'
+import { GetServerSideProps } from 'next'
 import { useState } from 'react'
-import { RiAddLine, RiRefreshLine } from 'react-icons/ri'
 import { AuthenticatedLayout } from 'src/layouts/AuthenticatedLayout'
 
-const spin = keyframes`
-  from {
-    transform: rotate(0deg);
+type ProductsProps = {
+  initialProducts?: {
+    products: Product[]
+    totalProducts: number
   }
-  to {
-    transform: rotate(360deg);
-  }
-`
-
-export default function Products() {
+}
+export default function Products({ initialProducts }: ProductsProps) {
   const [page, setPage] = useState(1)
-  const { data, refetch, error, isLoading, isFetching } = useProducts(page)
+  const { data, refetch, error, isLoading, isFetching } = useProducts(page, {
+    initialData: initialProducts,
+  })
 
   // const deleteUser = useMutation(
   //   async (id: number) => {
@@ -49,49 +41,13 @@ export default function Products() {
   // );
 
   return (
-    <Box flex="1" borderRadius={8} bg="gray.800" p="8">
-      <Flex mb="8" justify="space-between" align="center">
-        <Heading size="lg" fontWeight="normal">
-          Produtos
-          {!isLoading && isFetching && (
-            <Spinner size="sm" color="gray.500" ml="4" />
-          )}
-        </Heading>
-
-        <Flex>
-          <Tooltip label="Atualizar">
-            <Button
-              size="sm"
-              fontSize="sm"
-              bgColor="gray.700"
-              cursor="pointer"
-              onClick={() => refetch()}
-            >
-              <Icon
-                as={RiRefreshLine}
-                fontSize={20}
-                animation={
-                  !isLoading && isFetching ? `${spin} 1s infinite linear` : ''
-                }
-              />
-            </Button>
-          </Tooltip>
-          <NextLink href="/app/products/create" passHref>
-            <Button
-              as="a"
-              size="sm"
-              fontSize="sm"
-              colorScheme="orange"
-              ml="4"
-              leftIcon={<Icon as={RiAddLine} fontSize={20} />}
-              cursor="pointer"
-            >
-              Cadastrar novo produto
-            </Button>
-          </NextLink>
-        </Flex>
-      </Flex>
-
+    <PageWrapper
+      refetch={() => refetch()}
+      isFetching={isFetching}
+      isLoading={isLoading}
+      registrationRoute="/app/products/create"
+      title="Cadastro de Produtos"
+    >
       {isLoading && (
         <Flex justify="center">
           <Spinner />
@@ -105,7 +61,7 @@ export default function Products() {
       )}
 
       {data?.products.length && (
-        <>
+        <Scroll>
           <ProductsTable products={data?.products} />
 
           <Pagination
@@ -114,10 +70,32 @@ export default function Products() {
             totalCountOfRegisters={data.totalProducts}
             currentPage={page}
           />
-        </>
+        </Scroll>
       )}
-    </Box>
+    </PageWrapper>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const products = await prisma.product.findMany({})
+  const totalProducts = await prisma.product.count()
+
+  const formatedProducts = products.map((product) => ({
+    id: product.id,
+    name: product.name,
+    quantity: product.quantity,
+  }))
+
+  const initialProducts = {
+    totalProducts: totalProducts,
+    products: formatedProducts,
+  }
+
+  return {
+    props: {
+      initialProducts,
+    },
+  }
 }
 
 Products.layout = AuthenticatedLayout

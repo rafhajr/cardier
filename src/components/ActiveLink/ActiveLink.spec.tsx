@@ -38,4 +38,20 @@ describe('<ActiveLink />', () => {
 
     expect(screen.getByText(/link/i)).toHaveAttribute('color', 'orange.500')
   })
+
+  it('should be render active link with shouldMatchExactHref false', () => {
+    render(
+      <AppProvider>
+        <ActiveLink
+          shouldMatchExactHref={false}
+          href="example.com"
+          as="example.com"
+        >
+          <p>Link</p>
+        </ActiveLink>
+      </AppProvider>
+    )
+
+    expect(screen.getByText(/link/i)).toHaveAttribute('color', 'orange.500')
+  })
 })

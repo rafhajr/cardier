@@ -16,6 +16,17 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 })
 
+jest.mock('next/router', () => ({
+  useRouter() {
+    return {
+      route: '',
+      pathname: 'example.com',
+      query: '',
+      asPath: 'example.com',
+    }
+  },
+}))
+
 describe('<Sidebar/>', () => {
   it('should be render correctly', () => {
     const { container } = render(

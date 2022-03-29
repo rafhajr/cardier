@@ -56,7 +56,7 @@ export function ProductsTable({ products }: ProductsTableProps) {
                 size="sm"
                 fontSize="sm"
                 color="white"
-                colorScheme="cyan"
+                colorScheme="orange"
                 leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
               >
                 {isWideScreen ? 'Editar' : ''}
