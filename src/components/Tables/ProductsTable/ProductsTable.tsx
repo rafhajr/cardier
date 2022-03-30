@@ -1,6 +1,6 @@
 import {
   Button,
-  Checkbox,
+  HStack,
   Icon,
   Table,
   Tbody,
@@ -9,9 +9,10 @@ import {
   Th,
   Thead,
   Tr,
-  useBreakpointValue,
 } from '@chakra-ui/react'
 import { Product } from '@prisma/client'
+import NextLink from 'next/link'
+import { BiTrashAlt } from 'react-icons/bi'
 import { RiPencilLine } from 'react-icons/ri'
 
 type ProductsTableProps = {
@@ -19,18 +20,10 @@ type ProductsTableProps = {
 }
 
 export function ProductsTable({ products }: ProductsTableProps) {
-  const isWideScreen = useBreakpointValue({
-    base: false,
-    lg: true,
-  })
-
   return (
     <Table colorScheme="whiteAlpha" mb="4">
       <Thead>
         <Tr>
-          <Th color="gray.300" width="8">
-            <Checkbox colorScheme="orange" />
-          </Th>
           <Th>Nome</Th>
           <Th>
             <Text align="center">Quantidade</Text>
@@ -41,9 +34,6 @@ export function ProductsTable({ products }: ProductsTableProps) {
       <Tbody>
         {products?.map((product) => (
           <Tr key={product.id}>
-            <Td px={['4', '4', '6']}>
-              <Checkbox colorScheme="orange" />
-            </Td>
             <Td>
               <Text>{product.name}</Text>
             </Td>
@@ -51,16 +41,30 @@ export function ProductsTable({ products }: ProductsTableProps) {
               <Text align="center">{product.quantity}</Text>
             </Td>
             <Td p="0">
-              <Button
-                as="a"
-                size="sm"
-                fontSize="sm"
-                color="white"
-                colorScheme="orange"
-                leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
-              >
-                {isWideScreen ? 'Editar' : ''}
-              </Button>
+              <HStack>
+                <NextLink href={`/app/products/update/${product.id}`} passHref>
+                  <Button
+                    cursor="pointer"
+                    as="a"
+                    size="sm"
+                    fontSize="sm"
+                    color="white"
+                    colorScheme="orange"
+                    pr="1"
+                    leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
+                  />
+                </NextLink>
+                <Button
+                  cursor="pointer"
+                  as="a"
+                  size="sm"
+                  fontSize="sm"
+                  color="white"
+                  colorScheme="red"
+                  pr="1"
+                  leftIcon={<Icon as={BiTrashAlt} fontSize="16" />}
+                />
+              </HStack>
             </Td>
           </Tr>
         ))}

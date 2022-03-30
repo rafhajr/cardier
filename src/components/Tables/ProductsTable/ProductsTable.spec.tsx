@@ -1,6 +1,5 @@
 import { AppProvider } from '@/contexts/index'
-import { useBreakpointValue } from '@chakra-ui/react'
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import { ProductsTable } from './ProductsTable'
 
 Object.defineProperty(window, 'matchMedia', {
@@ -16,11 +15,6 @@ Object.defineProperty(window, 'matchMedia', {
     dispatchEvent: jest.fn(),
   })),
 })
-
-jest.mock('@chakra-ui/react', () => ({
-  ...jest.requireActual('@chakra-ui/react'),
-  useBreakpointValue: jest.fn(),
-}))
 
 const products = [
   {
@@ -45,15 +39,5 @@ describe('<PageWrapper />', () => {
     const { container } = renderComponent()
 
     expect(container).toMatchSnapshot()
-  })
-
-  it('should hidden update button when mobile screen', () => {
-    ;(useBreakpointValue as jest.Mock).mockReturnValue({
-      base: false,
-      lg: true,
-    })
-    renderComponent()
-
-    expect(screen.getByText(/editar/i)).toBeInTheDocument()
   })
 })

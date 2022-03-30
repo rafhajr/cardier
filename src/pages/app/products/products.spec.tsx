@@ -1,5 +1,4 @@
 import { AppProvider } from '@/contexts/index'
-import { prisma } from '@/lib/prisma'
 import { useProducts } from '@/services/hooks/useProducts'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { act } from '@testing-library/react-hooks'
@@ -24,32 +23,13 @@ jest.mock('@/services/hooks/useProducts', () => ({
   useProducts: jest.fn(),
 }))
 
-jest.mock('@/lib/prisma', () => ({
-  ...jest.requireActual('@/lib/prisma'),
-  products: () => [
-    {
-      id: '123',
-      name: 'John Doe',
-      quantity: 100,
-    },
-    {
-      id: '123',
-      name: 'John Doe',
-      quantity: 100,
-    },
-  ],
-}))
-
 const products = [
   {
     id: '123',
     name: 'John Doe',
     quantity: 100,
-  },
-  {
-    id: '123',
-    name: 'John Doe',
-    quantity: 100,
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
 ]
 
@@ -71,8 +51,6 @@ describe('<Products/>', () => {
     }))
 
     const { container } = renderComponent()
-
-    screen.logTestingPlaygroundURL()
 
     expect(container).toMatchSnapshot()
   })
@@ -116,8 +94,8 @@ describe('<Products/>', () => {
   })
 
   it('should test server side props ', async () => {
-    await getServerSideProps({} as GetServerSidePropsContext)
+    const response = await getServerSideProps({} as GetServerSidePropsContext)
 
-    expect(prisma).toBeCalled()
+    expect(response).toBeDefined()
   })
 })

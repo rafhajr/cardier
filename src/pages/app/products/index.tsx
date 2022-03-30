@@ -77,7 +77,7 @@ export default function Products({ initialProducts }: ProductsProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const products = await prisma.product.findMany({})
+  const products = await prisma.product.findMany()
   const totalProducts = await prisma.product.count()
 
   const formatedProducts = products.map((product) => ({

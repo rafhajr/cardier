@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UpdateProduct /> should render correctly 1`] = `
+<div>
+  <div
+    class="css-qqp9b6"
+  >
+    <h2
+      class="chakra-heading css-sxvlx"
+    >
+      Editar Produto
+    </h2>
+    <hr
+      aria-orientation="horizontal"
+      class="chakra-divider css-e44dav"
+    />
+    <form
+      class="css-0"
+    >
+      <div
+        class="chakra-stack css-uc6l60"
+      >
+        <div
+          class="css-14zyk4t"
+        >
+          <div
+            class="chakra-form-control css-1kxonj9"
+            role="group"
+          >
+            <label
+              class="chakra-form__label css-pk5tju"
+              for="email"
+              id="field-1-label"
+            >
+              Nome
+            </label>
+            <input
+              class="chakra-input css-uxk25m"
+              id="name"
+              name="name"
+              value="Camarao"
+            />
+          </div>
+          <div
+            class="chakra-form-control css-1kxonj9"
+            role="group"
+          >
+            <label
+              class="chakra-form__label css-pk5tju"
+              for="email"
+              id="field-2-label"
+            >
+              Quantidade
+            </label>
+            <input
+              class="chakra-input css-uxk25m"
+              id="quantity"
+              name="quantity"
+              value="200"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-bxm9v3"
+      >
+        <div
+          class="chakra-stack css-a9v878"
+        >
+          <a
+            class="chakra-button css-r8khcr"
+            href="/app/products"
+          >
+            Cancelar
+          </a>
+          <button
+            class="chakra-button css-mwvyhu"
+            type="submit"
+          >
+            Salvar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;
