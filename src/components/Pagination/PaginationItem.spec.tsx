@@ -46,6 +46,6 @@ describe('<Pagination />', () => {
       fireEvent.click(button)
     })
 
-    expect(onPageChange).toBeCalled()
+    expect(onPageChange).not.toBeCalled()
   })
 })

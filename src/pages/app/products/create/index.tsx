@@ -49,6 +49,7 @@ export default function CreateProduct() {
 
         toast({
           title: 'Sucesso',
+          position: 'top',
           description: 'Produto cadastrado com sucesso.',
           status: 'success',
           duration: 9000,
@@ -59,6 +60,7 @@ export default function CreateProduct() {
       } catch (err) {
         toast({
           title: 'Error',
+          position: 'top',
           description: err?.response?.data?.message,
           status: 'error',
           duration: 9000,

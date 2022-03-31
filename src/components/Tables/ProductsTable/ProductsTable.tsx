@@ -1,3 +1,4 @@
+import { DeleteProductModal } from '@/components/Modal/Product'
 import {
   Button,
   HStack,
@@ -12,6 +13,7 @@ import {
 } from '@chakra-ui/react'
 import { Product } from '@prisma/client'
 import NextLink from 'next/link'
+import { useState } from 'react'
 import { BiTrashAlt } from 'react-icons/bi'
 import { RiPencilLine } from 'react-icons/ri'
 
@@ -20,6 +22,14 @@ type ProductsTableProps = {
 }
 
 export function ProductsTable({ products }: ProductsTableProps) {
+  const [openModalDelete, setOpenModalDelete] = useState(false)
+  const [selectedProduct, setSelectedProduct] = useState('')
+
+  const handleToggleModalDelete = ({ id }: { id: string }) => {
+    setOpenModalDelete((state) => !state)
+    setSelectedProduct(id)
+  }
+
   return (
     <Table colorScheme="whiteAlpha" mb="4">
       <Thead>
@@ -55,8 +65,7 @@ export function ProductsTable({ products }: ProductsTableProps) {
                   />
                 </NextLink>
                 <Button
-                  cursor="pointer"
-                  as="a"
+                  onClick={() => handleToggleModalDelete({ id: product.id })}
                   size="sm"
                   fontSize="sm"
                   color="white"
@@ -69,6 +78,12 @@ export function ProductsTable({ products }: ProductsTableProps) {
           </Tr>
         ))}
       </Tbody>
+      {console.log(openModalDelete)}
+      <DeleteProductModal
+        isOpen={openModalDelete}
+        onClose={() => handleToggleModalDelete({ id: '' })}
+        selectedProduct={selectedProduct}
+      />
     </Table>
   )
 }

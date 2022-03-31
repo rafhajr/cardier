@@ -174,8 +174,9 @@ exports[`<Products/> should render correctly 1`] = `
                     </svg>
                   </span>
                 </a>
-                <a
-                  class="chakra-button css-160fvem"
+                <button
+                  class="chakra-button css-1qzi5mh"
+                  type="button"
                 >
                   <span
                     class="chakra-button__icon css-1wh2kri"
@@ -197,7 +198,7 @@ exports[`<Products/> should render correctly 1`] = `
                       />
                     </svg>
                   </span>
-                </a>
+                </button>
               </div>
             </td>
           </tr>

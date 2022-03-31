@@ -56,7 +56,7 @@ exports[`<UpdateProduct /> should render correctly 1`] = `
               class="chakra-input css-uxk25m"
               id="quantity"
               name="quantity"
-              value="200"
+              value="180"
             />
           </div>
         </div>

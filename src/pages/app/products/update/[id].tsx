@@ -28,7 +28,7 @@ type FormProps = {
 }
 
 type UpdateProductProps = {
-  product: Product
+  product?: Product
 }
 
 export default function UpdateProduct({ product }: UpdateProductProps) {
@@ -62,6 +62,7 @@ export default function UpdateProduct({ product }: UpdateProductProps) {
           title: 'Sucesso',
           description: 'Produto atualizado com sucesso.',
           status: 'success',
+          position: 'top',
           duration: 9000,
           isClosable: true,
         })
@@ -72,6 +73,7 @@ export default function UpdateProduct({ product }: UpdateProductProps) {
           title: 'Error',
           description: err?.response?.data?.message,
           status: 'error',
+          position: 'top',
           duration: 9000,
           isClosable: true,
         })

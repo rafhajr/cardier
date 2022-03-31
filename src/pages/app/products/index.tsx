@@ -7,6 +7,7 @@ import { useProducts } from '@/services/hooks/useProducts'
 import { Flex, Spinner, Text } from '@chakra-ui/react'
 import { Product } from '@prisma/client'
 import { GetServerSideProps } from 'next'
+import Head from 'next/head'
 import { useState } from 'react'
 import { AuthenticatedLayout } from 'src/layouts/AuthenticatedLayout'
 
@@ -22,24 +23,6 @@ export default function Products({ initialProducts }: ProductsProps) {
     initialData: initialProducts,
   })
 
-  // const deleteUser = useMutation(
-  //   async (id: number) => {
-  //     const cookies = parseCookies();
-  //     const response = await api.delete(`users/${id}`, {
-  //       headers: {
-  //         Authorization: `Bearer ${cookies["@dashgo.token"]}`
-  //       }
-  //     });
-
-  //     return response.data;
-  //   },
-  //   {
-  //     onSuccess: () => {
-  //       queryClient.invalidateQueries("users");
-  //     }
-  //   }
-  // );
-
   return (
     <PageWrapper
       refetch={() => refetch()}
@@ -48,6 +31,10 @@ export default function Products({ initialProducts }: ProductsProps) {
       registrationRoute="/app/products/create"
       title="Cadastro de Produtos"
     >
+      <Head>
+        <title>Maral | Produtos</title>
+      </Head>
+
       {isLoading && (
         <Flex justify="center">
           <Spinner />
