@@ -1,3 +1,4 @@
+import { CgLogIn } from 'react-icons/cg'
 import { RiDashboardLine, RiShoppingBag3Line } from 'react-icons/ri'
 
 export default {
@@ -8,5 +9,9 @@ export default {
   Produtos: {
     icon: RiShoppingBag3Line,
     link: '/app/products',
+  },
+  Entradas: {
+    icon: CgLogIn,
+    link: '/app/entries',
   },
 } as const

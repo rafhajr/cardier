@@ -78,7 +78,7 @@ export function ProductsTable({ products }: ProductsTableProps) {
           </Tr>
         ))}
       </Tbody>
-      {console.log(openModalDelete)}
+
       <DeleteProductModal
         isOpen={openModalDelete}
         onClose={() => handleToggleModalDelete({ id: '' })}

@@ -1,0 +1,1 @@
+export { EntriesTable } from './EntriesTable'

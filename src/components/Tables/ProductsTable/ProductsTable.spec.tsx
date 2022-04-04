@@ -1,5 +1,6 @@
 import { AppProvider } from '@/contexts/index'
-import { render } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { act } from '@testing-library/react-hooks'
 import { ProductsTable } from './ProductsTable'
 
 Object.defineProperty(window, 'matchMedia', {
@@ -39,5 +40,43 @@ describe('<PageWrapper />', () => {
     const { container } = renderComponent()
 
     expect(container).toMatchSnapshot()
+  })
+
+  it('should open delete modal', async () => {
+    renderComponent()
+
+    const deleteButton = screen.getByRole('button')
+
+    act(() => {
+      fireEvent.click(deleteButton)
+    })
+
+    await waitFor(() =>
+      expect(screen.getByText('Excluir Produto')).toBeInTheDocument()
+    )
+  })
+
+  it('should close delete modal', async () => {
+    renderComponent()
+
+    const deleteButton = screen.getByRole('button')
+
+    act(() => {
+      fireEvent.click(deleteButton)
+    })
+
+    const dialog = screen.getByRole('alertdialog', {
+      name: /excluir produto/i,
+    })
+
+    const cancelButton = screen.getByRole('button', {
+      name: /cancelar/i,
+    })
+
+    act(() => {
+      fireEvent.click(cancelButton)
+    })
+
+    await waitFor(() => expect(dialog).not.toBeInTheDocument())
   })
 })

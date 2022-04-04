@@ -33,22 +33,4 @@ describe('<PageWrapper />', () => {
 
     expect(useMutationSpy).toBeCalled()
   })
-
-  it('should render error when delete product', async () => {
-    const useMutationSpy = jest
-      .spyOn(require('react-query'), 'useMutation')
-      .mockReturnValue(() => Promise.reject(new Error('error')))
-
-    renderComponent()
-
-    const button = screen.getByRole('button', {
-      name: /excluir/i,
-    })
-
-    act(() => {
-      fireEvent.click(button)
-    })
-
-    screen.logTestingPlaygroundURL()
-  })
 })

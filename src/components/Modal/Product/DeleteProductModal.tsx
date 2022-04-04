@@ -40,29 +40,18 @@ export function DeleteProductModal({
   )
 
   const handleDeleteProduct = useCallback(async () => {
-    try {
-      await deleteProduct.mutateAsync()
+    await deleteProduct.mutateAsync()
 
-      toast({
-        title: 'Sucesso',
-        position: 'top',
-        description: 'Produto cadastrado com sucesso.',
-        status: 'success',
-        duration: 9000,
-        isClosable: true,
-      })
+    toast({
+      title: 'Sucesso',
+      position: 'top',
+      description: 'Produto excluido com sucesso.',
+      status: 'success',
+      duration: 9000,
+      isClosable: true,
+    })
 
-      onClose()
-    } catch (err) {
-      toast({
-        title: 'Error',
-        position: 'top',
-        description: err?.response?.data?.message,
-        status: 'error',
-        duration: 9000,
-        isClosable: true,
-      })
-    }
+    onClose()
   }, [deleteProduct, onClose, toast])
 
   return (
