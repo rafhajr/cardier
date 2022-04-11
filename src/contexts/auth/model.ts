@@ -9,6 +9,7 @@ export type AuthContextProviderProps = {
 export type UserProps = {
   name: string
   email: string
+  id: string
 }
 
 export type SignInCredentials = {

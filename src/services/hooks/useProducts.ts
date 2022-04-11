@@ -12,7 +12,7 @@ type ApiResponse = {
   totalProducts: number
 }
 
-async function getProducts(page: number): Promise<ApiResponse> {
+async function getProducts(page?: number): Promise<ApiResponse> {
   const { data } = await api.get<ApiResponse>('api/products', {
     params: page,
   })
@@ -21,7 +21,7 @@ async function getProducts(page: number): Promise<ApiResponse> {
 }
 
 export function useProducts(
-  page: number,
+  page?: number,
   options?: UseQueryOptions<ApiResponse>
 ): UseQueryResult<ApiResponse> {
   return useQuery(['products', page], () => getProducts(page), {

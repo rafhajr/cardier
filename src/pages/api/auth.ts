@@ -32,6 +32,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     const authUser = {
       name: user.name,
       email: user.email,
+      id: user.id,
     }
 
     const token = jwt.sign({ id: user.id }, String(process.env.SECRET), {

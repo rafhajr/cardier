@@ -29,7 +29,7 @@ export default function Entries({ initialEntries }: InitialEntriesProps) {
       refetch={() => refetch()}
       isFetching={isFetching}
       isLoading={isLoading}
-      registrationRoute=""
+      registrationRoute="entries/create"
       title="Entradas"
     >
       <Head>
