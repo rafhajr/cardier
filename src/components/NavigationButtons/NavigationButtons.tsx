@@ -10,7 +10,7 @@ interface IButton {
 }
 
 export const NavigationButtons = () => {
-  const { currentTab, setCurrentTab } = useCard()
+  const { currentTab, setCurrentTab, orderCard } = useCard()
 
   const isWideVersion = useBreakpointValue({
     base: false,
@@ -37,7 +37,7 @@ export const NavigationButtons = () => {
           </>
         )}
         {currentTab !== 1 && (
-          <ButtonStyled label="Solicitar cartão" bc="#E0BE74" c="#272727" onClick={() => console.log('TROLEI')}/>
+          <ButtonStyled label="Solicitar cartão" bc="#E0BE74" c="#272727" onClick={() => orderCard()}/>
         )}
       </Flex>
       {currentTab !== 1 && (

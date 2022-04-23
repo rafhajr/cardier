@@ -5,9 +5,9 @@ const CardContext = createContext({} as CardContextData)
 
 function CardContextProvider({ children }: CardContextProviderProps) {
   const [cardName, setCardName] = useState<string>('')
-  const [cardNameLocal, setCardNameLocal] = useState<number>(2)
-  const [cardNumberLocal, setCardNumberLocal] = useState<number>(2)
-  const [cardValidityLocal, setCardValidityLocal] = useState<number>(3)
+  const [cardNameLocal, setCardNameLocal] = useState<number>(2) //1 = dont use, 2 = front, 3 = back
+  const [cardNumberLocal, setCardNumberLocal] = useState<number>(2) //1 = dont use, 2 = front, 3 = back
+  const [cardValidityLocal, setCardValidityLocal] = useState<number>(3) //1 = dont use, 2 = front, 3 = back
   const [currentTab, setCurrentTab] = useState<number>(1)
 
   const [customText, setCustomText] = useState<string>('')
@@ -17,9 +17,40 @@ function CardContextProvider({ children }: CardContextProviderProps) {
   const [file, setFile] = useState<string>('')
   const [flag, setFlag] = useState<string>('')
 
-  const [materialSelected, setMaterialSelected] = useState('black')
-  const [printSelected, setPrintSelected] = useState('dark')
+  const [materialSelected, setMaterialSelected] = useState('black') // black, white, silver, gold, roseGold, blackGold, Rainbow
+  const [printSelected, setPrintSelected] = useState('dark') // dark, clear, colorful
   const [borderSelected, setBorderSelected] = useState(0)
+
+  const orderCard = () => {
+    const information = {
+      Nome: cardName,
+      'Local do nome': cardNameLocal,
+      'Local do número': cardNumberLocal,
+      'Local da validade': cardValidityLocal,
+    }
+
+    const metal = {
+      Material: materialSelected,
+      Impressão: printSelected,
+      Borda: borderSelected,
+    }
+
+    const design = {
+      'Texto personalizado': customText,
+      'Tamanho do texo': sizeValue,
+      'Tipografia do texto': typoValue,
+      Imagem: file,
+      Bandeira: flagValue,
+      'Imagem Bandeira': flag,
+    }
+
+    const order = {
+      information,
+      metal,
+      design,
+    }
+    console.log(order)
+  }
 
   const value = useMemo(
     () => ({
@@ -51,6 +82,7 @@ function CardContextProvider({ children }: CardContextProviderProps) {
       setPrintSelected,
       borderSelected,
       setBorderSelected,
+      orderCard,
     }),
     [
       cardName,
@@ -81,6 +113,7 @@ function CardContextProvider({ children }: CardContextProviderProps) {
       setPrintSelected,
       borderSelected,
       setBorderSelected,
+      orderCard,
     ]
   )
 

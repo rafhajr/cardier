@@ -55,4 +55,5 @@ export type CardContextData = {
   setPrintSelected: (data: string) => void
   borderSelected: number
   setBorderSelected: (data: number) => void
+  orderCard: () => void
 }
