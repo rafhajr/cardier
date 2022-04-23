@@ -1,1 +1,23 @@
-export { default as SIDEBAR_NAVIGATION } from './sidebar-navigation'
+export const dataSizes = [
+  { value: 13, label: '13 px' },
+  { value: 15, label: '15 px' },
+  { value: 17, label: '17 px' },
+  { value: 19, label: '19 px' },
+  { value: 21, label: '21 px' },
+]
+
+export const dataTypos = [
+  { value: 13, label: 'Lota Grotesque' },
+  { value: 15, label: 'Arial' },
+  { value: 17, label: 'Times New Roman' },
+  { value: 19, label: 'Helvética' },
+  { value: 21, label: 'Times' },
+]
+
+export const dataFlags = [
+  { value: 1, label: 'Mastercard' },
+  { value: 2, label: 'Visa' },
+  { value: 3, label: 'Elo' },
+  { value: 4, label: 'American Express' },
+  { value: 5, label: 'Hipercard' },
+]

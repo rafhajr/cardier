@@ -12,9 +12,12 @@ export const theme = extendTheme({
         boxShadow: 'none',
       },
       body: {
-        bg: 'gray.900',
-        color: 'gray.50',
+        bg: '#FFFFFF',
+        color: '#000000',
       },
+      _focus: {
+        boxShadow: 'none'
+      }
     },
   },
 })

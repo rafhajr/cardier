@@ -1,0 +1,2 @@
+export { CardInformations } from "./CardInformations";
+

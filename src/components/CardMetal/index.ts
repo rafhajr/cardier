@@ -1,0 +1,2 @@
+export { CardMetal } from "./CardMetal";
+
