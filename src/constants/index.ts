@@ -7,11 +7,11 @@ export const dataSizes = [
 ]
 
 export const dataTypos = [
-  { value: 13, label: 'Lota Grotesque' },
-  { value: 15, label: 'Arial' },
-  { value: 17, label: 'Times New Roman' },
-  { value: 19, label: 'Helvética' },
-  { value: 21, label: 'Times' },
+  { value: 1, label: 'Lota Grotesque' },
+  { value: 2, label: 'Arial' },
+  { value: 3, label: 'Times New Roman' },
+  { value: 4, label: 'Helvética' },
+  { value: 5, label: 'Times' },
 ]
 
 export const dataFlags = [

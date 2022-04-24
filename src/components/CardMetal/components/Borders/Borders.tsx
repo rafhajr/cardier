@@ -1,11 +1,11 @@
+import { Border1 } from '@/constants/BordersTypes/Border1'
+import { Border2 } from '@/constants/BordersTypes/Border2'
+import { Border3Black, Border3White } from '@/constants/BordersTypes/Border3'
+import { Border4Black, Border4White } from '@/constants/BordersTypes/Border4'
+import { Border5Black, Border5White } from '@/constants/BordersTypes/Border5'
+import { Border6Black, Border6White } from '@/constants/BordersTypes/Border6'
 import { Button, Grid, GridItem, Text } from '@chakra-ui/react'
 import React from 'react'
-import { Border1 } from './BordersTypes/Border1'
-import { Border2 } from './BordersTypes/Border2'
-import { Border3Black, Border3White } from './BordersTypes/Border3'
-import { Border4Black, Border4White } from './BordersTypes/Border4'
-import { Border5Black, Border5White } from './BordersTypes/Border5'
-import { Border6Black, Border6White } from './BordersTypes/Border6'
 
 interface IBorderButton {
   borderSelected: number

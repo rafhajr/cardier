@@ -1,7 +1,7 @@
-import { Box, Image } from '@chakra-ui/react'
+import { Box, Button, Image } from '@chakra-ui/react'
 import React from 'react'
 import { useDropzone } from 'react-dropzone'
-import { HiOutlinePlusSm } from 'react-icons/hi'
+import { HiOutlinePlusSm, HiTrash } from 'react-icons/hi'
 
 interface IDropZone {
   w: string
@@ -32,16 +32,41 @@ export const DropZone = ({ w, h, value, setValue }: IDropZone) => {
       borderStyle="dashed"
       borderColor="#C4C4C4"
       borderRadius="10px"
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-      {...getRootProps()}
+      position="relative"
     >
-      <input {...getInputProps()} accept="image/*" />
-      {value ? (
-        <Image src={value} maxH={h} maxW={w} alt="Imagem Ponto" />
-      ) : (
-        <HiOutlinePlusSm size="30px" color="#A9A9A9" />
+      <Box
+        {...getRootProps()}
+        w={w}
+        h={h}
+        alignItems="center"
+        display="flex"
+        justifyContent="center"
+      >
+        <input {...getInputProps()} accept="image/*" />
+        {value ? (
+          <Image src={value} maxH={h} maxW={w} alt="Imagem Ponto" />
+        ) : (
+          <HiOutlinePlusSm size="30px" color="#A9A9A9" />
+        )}
+      </Box>
+      {value && (
+        <>
+          <Button
+            position="absolute"
+            left="95%"
+            top="-10%"
+            border="1px"
+            borderColor="#A9A9A9"
+            borderRadius="10px"
+            onClick={() => setValue('')}
+            backgroundColor="#fff"
+            // w="50px"
+            // width="20px"
+            // height="20px"
+          >
+            <HiTrash size="20px" color="#A9A9A9" />
+          </Button>
+        </>
       )}
     </Box>
   )
