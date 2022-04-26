@@ -9,7 +9,7 @@ import { Box, Flex, HStack, StackDivider } from '@chakra-ui/react'
 import React from 'react'
 import { useCard } from 'src/hooks'
 
-const SignIn: React.FC = () => {
+const CardHome: React.FC = () => {
   const { currentTab } = useCard()
 
   return (
@@ -37,4 +37,4 @@ const SignIn: React.FC = () => {
   )
 }
 
-export default SignIn
+export default CardHome

@@ -6,7 +6,7 @@ export function middleware(req: NextRequest) {
 
   if (!token) {
     const url = req.nextUrl.clone()
-    url.pathname = '/signin'
+    url.pathname = '/cardHome'
     return NextResponse.redirect(url)
   }
 
