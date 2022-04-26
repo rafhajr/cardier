@@ -3,12 +3,10 @@ import { Border2 } from '@/constants/BordersTypes/Border2'
 import { Box, Flex, Image, Spacer, Text, VStack } from '@chakra-ui/react'
 import React from 'react'
 import { useCard } from 'src/hooks'
-// import { Border3Black, Border3White } from '@/constants/BordersTypes/Border3'
-// import { Border4Black, Border4White } from '@/constants/BordersTypes/Border4'
-// import { Border5Black, Border5White } from '@/constants/BordersTypes/Border5'
-// import { Border6Black, Border6White } from '@/constants/BordersTypes/Border6'
 interface ICardSkeleton {
   children: any
+  ref?: HTMLDivElement | null
+  isFront?: boolean
 }
 
 interface ITextProps {
@@ -31,6 +29,8 @@ export const Card = () => {
     typoValue,
     file,
     flag,
+    frontCardRef,
+    backCardRef,
   } = useCard()
 
   const textColor = () => {
@@ -46,9 +46,9 @@ export const Card = () => {
     return materials[materialSelected] || '#909090'
   }
 
-  const CardSkeleton = ({ children }: ICardSkeleton) => {
+  const CardSkeleton = ({ children, isFront }: ICardSkeleton) => {
     return (
-      <Box w="435px" h="275px">
+      <Box w="435px" h="275px" ref={isFront ? frontCardRef : backCardRef}>
         <Box borderRadius="24px" position="relative">
           <Box>
             <Image
@@ -152,11 +152,7 @@ export const Card = () => {
 
   const ImageCard = ({ top, left }: ITextProps) => {
     return (
-      <Box
-        position="absolute"
-        top={top}
-        left={left}
-      >
+      <Box position="absolute" top={top} left={left}>
         <Image w="100px" src={file} alt="customImage" />
       </Box>
     )
@@ -164,11 +160,7 @@ export const Card = () => {
 
   const FlagCard = ({ top, left }: ITextProps) => {
     return (
-      <Box
-        position="absolute"
-        top={top}
-        left={left}
-      >
+      <Box position="absolute" top={top} left={left}>
         <Image w="100px" src={flag} alt="customImage" />
       </Box>
     )
@@ -176,7 +168,7 @@ export const Card = () => {
 
   const FrontCard = () => {
     return (
-      <CardSkeleton>
+      <CardSkeleton isFront>
         <Box
           position="absolute"
           top="40%"
@@ -286,7 +278,6 @@ export const Card = () => {
     <VStack
       w="445px"
       h="580px"
-      // backgroundColor="aliceblue"
       display="flex"
       alignItems="center"
       justifyContent="center"

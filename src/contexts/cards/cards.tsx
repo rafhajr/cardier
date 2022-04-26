@@ -1,4 +1,5 @@
-import { createContext, useMemo, useState } from 'react'
+import { createContext, useMemo, useRef, useState } from 'react'
+import { takeScreenshot } from '../../helpers/screenshot'
 import { CardContextData, CardContextProviderProps } from './models'
 
 const CardContext = createContext({} as CardContextData)
@@ -21,7 +22,16 @@ function CardContextProvider({ children }: CardContextProviderProps) {
   const [printSelected, setPrintSelected] = useState('dark') // dark, clear, colorful
   const [borderSelected, setBorderSelected] = useState(0)
 
-  const orderCard = () => {
+  const frontCardRef = useRef<HTMLDivElement>(null)
+  const backCardRef = useRef<HTMLDivElement>(null)
+
+  const orderCard = async () => {
+    const frontCardImage = await takeScreenshot(frontCardRef.current)
+    const backCardImage = await takeScreenshot(backCardRef.current)
+
+    console.log(frontCardImage)
+    console.log(backCardImage)
+
     const information = {
       Nome: cardName,
       'Local do nome': cardNameLocal,
@@ -44,11 +54,18 @@ function CardContextProvider({ children }: CardContextProviderProps) {
       'Imagem Bandeira': flag,
     }
 
+    const cardsImages = {
+      'Imagem da frente': frontCardImage,
+      'Imagem de trás': backCardImage,
+    }
+
     const order = {
       information,
       metal,
       design,
+      cardsImages,
     }
+
     console.log(order)
   }
 
@@ -83,6 +100,8 @@ function CardContextProvider({ children }: CardContextProviderProps) {
       borderSelected,
       setBorderSelected,
       orderCard,
+      frontCardRef,
+      backCardRef,
     }),
     [
       cardName,
@@ -114,6 +133,8 @@ function CardContextProvider({ children }: CardContextProviderProps) {
       borderSelected,
       setBorderSelected,
       orderCard,
+      frontCardRef,
+      backCardRef,
     ]
   )
 

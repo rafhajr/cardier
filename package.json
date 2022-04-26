@@ -18,6 +18,7 @@
     "axios": "^0.26.1",
     "bcrypt": "^5.0.1",
     "framer-motion": "^6",
+    "html2canvas": "^1.4.1",
     "jsonwebtoken": "^8.5.1",
     "next": "12.1.0",
     "nookies": "^2.5.2",

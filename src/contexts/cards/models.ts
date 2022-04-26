@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-import { ReactNode } from 'react'
+import { ReactNode, RefObject } from 'react'
 
 export type CardContextProviderProps = {
   children: ReactNode
@@ -56,4 +56,6 @@ export type CardContextData = {
   borderSelected: number
   setBorderSelected: (data: number) => void
   orderCard: () => void
+  frontCardRef: RefObject<HTMLDivElement>
+  backCardRef: RefObject<HTMLDivElement>
 }
