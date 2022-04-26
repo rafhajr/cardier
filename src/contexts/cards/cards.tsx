@@ -27,46 +27,47 @@ function CardContextProvider({ children }: CardContextProviderProps) {
 
   const orderCard = async () => {
     const frontCardImage = await takeScreenshot(frontCardRef.current)
-    const backCardImage = await takeScreenshot(backCardRef.current)
-
     console.log(frontCardImage)
-    console.log(backCardImage)
+    // const backCardImage = await takeScreenshot(backCardRef.current)
 
-    const information = {
-      Nome: cardName,
-      'Local do nome': cardNameLocal,
-      'Local do número': cardNumberLocal,
-      'Local da validade': cardValidityLocal,
-    }
+    // console.log(frontCardImage)
+    // console.log(backCardImage)
 
-    const metal = {
-      Material: materialSelected,
-      Impressão: printSelected,
-      Borda: borderSelected,
-    }
+    // const information = {
+    //   Nome: cardName,
+    //   'Local do nome': cardNameLocal,
+    //   'Local do número': cardNumberLocal,
+    //   'Local da validade': cardValidityLocal,
+    // }
 
-    const design = {
-      'Texto personalizado': customText,
-      'Tamanho do texo': sizeValue,
-      'Tipografia do texto': typoValue,
-      Imagem: file,
-      Bandeira: flagValue,
-      'Imagem Bandeira': flag,
-    }
+    // const metal = {
+    //   Material: materialSelected,
+    //   Impressão: printSelected,
+    //   Borda: borderSelected,
+    // }
 
-    const cardsImages = {
-      'Imagem da frente': frontCardImage,
-      'Imagem de trás': backCardImage,
-    }
+    // const design = {
+    //   'Texto personalizado': customText,
+    //   'Tamanho do texo': sizeValue,
+    //   'Tipografia do texto': typoValue,
+    //   Imagem: file,
+    //   Bandeira: flagValue,
+    //   'Imagem Bandeira': flag,
+    // }
 
-    const order = {
-      information,
-      metal,
-      design,
-      cardsImages,
-    }
+    // const cardsImages = {
+    //   'Imagem da frente': frontCardImage,
+    //   'Imagem de trás': backCardImage,
+    // }
 
-    console.log(order)
+    // const order = {
+    //   information,
+    //   metal,
+    //   design,
+    //   cardsImages,
+    // }
+
+    // console.log(order)
   }
 
   const value = useMemo(

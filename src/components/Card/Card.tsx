@@ -1,7 +1,8 @@
 import { Border1 } from '@/constants/BordersTypes/Border1'
 import { Border2 } from '@/constants/BordersTypes/Border2'
 import { Box, Flex, Image, Spacer, Text, VStack } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState } from 'react'
+import Draggable from 'react-draggable'
 import { useCard } from 'src/hooks'
 interface ICardSkeleton {
   children: any
@@ -14,6 +15,21 @@ interface ITextProps {
   left: string
   fontSize?: string
   fontSizeSmall?: string
+  disabled?: boolean
+}
+
+interface IPosition {
+  x: number
+  y: number
+}
+
+interface IDraggable {
+  children: any
+  disabled?: boolean
+  position: IPosition
+  setPosition: (data: IPosition) => void
+  top: string
+  left: string
 }
 
 export const Card = () => {
@@ -33,6 +49,13 @@ export const Card = () => {
     backCardRef,
   } = useCard()
 
+  const [textPosition, setTextPosition] = useState<IPosition>({ x: 0, y: 0 })
+  const [namePosition, setNamePosition] = useState<IPosition>({ x: 0, y: 0 })
+  const [imagePosition, setImagePosition] = useState<IPosition>({ x: 0, y: 0 })
+  const [flagPosition, setFlagPosition] = useState<IPosition>({ x: 0, y: 0 })
+
+  const [isMoving, setIsMoving] = useState<boolean>(false)
+
   const textColor = () => {
     const materials: Record<string, string> = {
       black: '#909090',
@@ -48,7 +71,7 @@ export const Card = () => {
 
   const CardSkeleton = ({ children, isFront }: ICardSkeleton) => {
     return (
-      <Box w="435px" h="275px" ref={isFront ? frontCardRef : backCardRef}>
+      <Box w="435px" h="275px" ref={isFront ? frontCardRef : backCardRef}  userSelect="none">
         <Box borderRadius="24px" position="relative">
           <Box>
             <Image
@@ -57,6 +80,8 @@ export const Card = () => {
               src={`/FullMaterials/${materialSelected}.jpg`}
               alt={materialSelected}
               borderRadius="24px"
+              draggable="false"
+
             />
           </Box>
           {children}
@@ -73,7 +98,12 @@ export const Card = () => {
         left={left}
         transform="translate(-50%, -50%)"
       >
-        <Text color={textColor()} fontSize={fontSize}>
+        <Text
+          color={textColor()}
+          fontSize={fontSize}
+          draggable={false}
+          userSelect="none"
+        >
           0000 0000 0000 0000
         </Text>
       </Box>
@@ -91,32 +121,79 @@ export const Card = () => {
         justifyContent="center"
       >
         <Box pr="5px">
-          <Text color={textColor()} fontSize={fontSizeSmall}>
+          <Text color={textColor()} fontSize={fontSizeSmall} userSelect="none">
             VALID
           </Text>
-          <Text color={textColor()} fontSize={fontSizeSmall}>
+          <Text color={textColor()} fontSize={fontSizeSmall} userSelect="none">
             THRU
           </Text>
         </Box>
-        <Text color={textColor()} fontSize={fontSize}>
+        <Text color={textColor()} fontSize={fontSize} userSelect="none">
           55/55
         </Text>
       </Flex>
     )
   }
 
-  const NameCard = ({ top, left, fontSize }: ITextProps) => {
+  const DraggableCard = ({
+    children,
+    disabled,
+    position,
+    setPosition,
+    top,
+    left,
+  }: IDraggable) => {
     return (
-      <Box
-        position="absolute"
+      <Draggable
+        position={{
+          x: disabled ? 0 : position.x,
+          y: disabled ? 0 : position.y,
+        }}
+        onStart={() => {
+          setIsMoving(true)
+        }}
+        onStop={(e, data) => {
+          setIsMoving(false)
+          setPosition({ x: data.x, y: data.y })
+          return false
+        }}
+        bounds="parent"
+        disabled={disabled}
+      >
+        <Box
+          position="absolute"
+          top={top}
+          left={left}
+          _hover={{
+            border: '1px',
+            borderColor: isMoving ? '#C4C4C4' : '#A9A9A9',
+            borderStyle: 'dashed',
+            cursor: 'move',
+          }}
+        >
+          {children}
+        </Box>
+      </Draggable>
+    )
+  }
+
+  const NameCard = ({ top, left, fontSize, disabled }: ITextProps) => {
+    return (
+      <DraggableCard
+        position={namePosition}
+        disabled={disabled}
+        setPosition={setNamePosition}
         top={top}
         left={left}
-        // transform="translate(-50%, -50%)"
       >
-        <Text color={textColor()} fontSize={fontSize}>
+        <Text
+          color={textColor()}
+          fontSize={fontSize}
+          userSelect="none"
+        >
           {cardName ? cardName : '(NAME HERE)'}
         </Text>
-      </Box>
+      </DraggableCard>
     )
   }
 
@@ -133,36 +210,47 @@ export const Card = () => {
     }
 
     return (
-      <Box
-        position="absolute"
+      <DraggableCard
+        position={textPosition}
+        setPosition={setTextPosition}
         top={top}
         left={left}
-        // transform="translate(-50%, -50%)"
       >
         <Text
           color={textColor()}
           fontSize={`${sizeValue}px`}
           fontFamily={getFonts()}
+          userSelect="none"
         >
           {customText ? customText : '(CUSTOM TEXT HERE)'}
         </Text>
-      </Box>
+      </DraggableCard>
     )
   }
 
   const ImageCard = ({ top, left }: ITextProps) => {
     return (
-      <Box position="absolute" top={top} left={left}>
+      <DraggableCard
+        position={imagePosition}
+        setPosition={setImagePosition}
+        top={top}
+        left={left}
+      >
         <Image w="100px" src={file} alt="customImage" />
-      </Box>
+      </DraggableCard>
     )
   }
 
   const FlagCard = ({ top, left }: ITextProps) => {
     return (
-      <Box position="absolute" top={top} left={left}>
+      <DraggableCard
+        position={flagPosition}
+        setPosition={setFlagPosition}
+        top={top}
+        left={left}
+      >
         <Image w="100px" src={flag} alt="customImage" />
-      </Box>
+      </DraggableCard>
     )
   }
 
@@ -175,7 +263,7 @@ export const Card = () => {
           left="20%"
           transform="translate(-50%, -50%)"
         >
-          <Image w="60px" src="/chip.png" alt="chip" />
+          <Image w="60px" src="/chip.png" alt="chip" draggable="false" />
         </Box>
 
         {borderSelected !== 0 && (
@@ -195,12 +283,6 @@ export const Card = () => {
           </Box>
         )}
 
-        {customText && <CustomTextCard top="10%" left="10%" />}
-
-        {file && <ImageCard top="20%" left="50%" />}
-
-        {flag && <FlagCard top="20%" left="50%" />}
-
         {cardNumberLocal === 2 && (
           <NumberCard top="52%" left="47%" fontSize="20px" />
         )}
@@ -217,6 +299,12 @@ export const Card = () => {
         {cardNameLocal === 2 && (
           <NameCard top="70%" left="20%" fontSize="18px" />
         )}
+
+        {customText && <CustomTextCard top="10%" left="10%" />}
+
+        {file && <ImageCard top="20%" left="50%" />}
+
+        {flag && <FlagCard top="20%" left="50%" />}
       </CardSkeleton>
     )
   }
@@ -225,7 +313,7 @@ export const Card = () => {
     return (
       <CardSkeleton>
         <Box position="absolute" top="8%" left="0%">
-          <Image src="/magnetStripe.png" alt="magnetStripe" />
+          <Image src="/magnetStripe.png" alt="magnetStripe" draggable="false" />
         </Box>
 
         <Box
@@ -237,18 +325,23 @@ export const Card = () => {
           <Flex>
             <Box w="250px" h="50px" backgroundColor="#fff" />
             <Box pl="5px">
-              <Text color={textColor()} fontSize="20px" pt="12px">
+              <Text
+                color={textColor()}
+                fontSize="20px"
+                pt="12px"
+                userSelect="none"
+              >
                 555
               </Text>
             </Box>
           </Flex>
 
           <Flex w="250px">
-            <Text color={textColor()} fontSize="8px">
+            <Text color={textColor()} fontSize="8px" userSelect="none">
               AUTHORIZED SIGNATURE
             </Text>
             <Spacer />
-            <Text color={textColor()} fontSize="8px">
+            <Text color={textColor()} fontSize="8px" userSelect="none">
               NOT VALID UNLESS SIGNED
             </Text>
           </Flex>
@@ -268,7 +361,7 @@ export const Card = () => {
         )}
 
         {cardNameLocal === 3 && (
-          <NameCard top="78%" left="6%" fontSize="25px" />
+          <NameCard top="78%" left="6%" fontSize="25px" disabled />
         )}
       </CardSkeleton>
     )
