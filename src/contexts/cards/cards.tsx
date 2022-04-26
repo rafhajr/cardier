@@ -1,3 +1,4 @@
+import { api } from '@/services/api'
 import { createContext, useMemo, useRef, useState } from 'react'
 import { takeScreenshot } from '../../helpers/screenshot'
 import { CardContextData, CardContextProviderProps } from './models'
@@ -25,49 +26,55 @@ function CardContextProvider({ children }: CardContextProviderProps) {
   const frontCardRef = useRef<HTMLDivElement>(null)
   const backCardRef = useRef<HTMLDivElement>(null)
 
-  const orderCard = async () => {
+  const orderCard = async (): Promise<void> => {
     const frontCardImage = await takeScreenshot(frontCardRef.current)
-    console.log(frontCardImage)
-    // const backCardImage = await takeScreenshot(backCardRef.current)
+    const backCardImage = await takeScreenshot(backCardRef.current)
 
-    // console.log(frontCardImage)
-    // console.log(backCardImage)
+    const information = {
+      Nome: cardName,
+      'Local do nome': cardNameLocal,
+      'Local do número': cardNumberLocal,
+      'Local da validade': cardValidityLocal,
+    }
 
-    // const information = {
-    //   Nome: cardName,
-    //   'Local do nome': cardNameLocal,
-    //   'Local do número': cardNumberLocal,
-    //   'Local da validade': cardValidityLocal,
-    // }
+    const metal = {
+      Material: materialSelected,
+      Impressão: printSelected,
+      Borda: borderSelected,
+    }
 
-    // const metal = {
-    //   Material: materialSelected,
-    //   Impressão: printSelected,
-    //   Borda: borderSelected,
-    // }
+    const design = {
+      'Texto personalizado': customText,
+      'Tamanho do texo': sizeValue,
+      'Tipografia do texto': typoValue,
+      Imagem: file,
+      Bandeira: flagValue,
+      'Imagem Bandeira': flag,
+    }
 
-    // const design = {
-    //   'Texto personalizado': customText,
-    //   'Tamanho do texo': sizeValue,
-    //   'Tipografia do texto': typoValue,
-    //   Imagem: file,
-    //   Bandeira: flagValue,
-    //   'Imagem Bandeira': flag,
-    // }
+    const cardsImages = {
+       frontCardImage,
+       backCardImage,
+    }
 
-    // const cardsImages = {
-    //   'Imagem da frente': frontCardImage,
-    //   'Imagem de trás': backCardImage,
-    // }
+    const order = {
+      information,
+      metal,
+      design,
+      cardsImages,
+    }
 
-    // const order = {
-    //   information,
-    //   metal,
-    //   design,
-    //   cardsImages,
-    // }
+    try {
+      const { data: newData } = await api.post<any>('api/send', {
+        order,
+      })
 
-    // console.log(order)
+      console.log(newData)
+    } catch (err) {
+      console.log(err)
+    } finally {
+      console.log('uepa')
+    }
   }
 
   const value = useMemo(

@@ -55,7 +55,7 @@ export type CardContextData = {
   setPrintSelected: (data: string) => void
   borderSelected: number
   setBorderSelected: (data: number) => void
-  orderCard: () => void
+  orderCard: () => Promise<void>
   frontCardRef: RefObject<HTMLDivElement>
   backCardRef: RefObject<HTMLDivElement>
 }
