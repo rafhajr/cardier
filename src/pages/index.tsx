@@ -22,7 +22,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   if (!cookies['@maral.token']) {
     return {
       redirect: {
-        destination: '/signin',
+        destination: '/cardHome',
         permanent: false,
       },
     }
