@@ -43,8 +43,8 @@ export const UserInformation = () => {
   }
 
   const handleReset = () => {
-      reset()
-      handleClose()
+    reset()
+    handleClose()
   }
 
   const handleClose = () => {
@@ -142,7 +142,7 @@ export const UserInformation = () => {
                 color={'#272727'}
                 mr={3}
                 onClick={() => handleRequest()}
-                disabled={ !userEmail || !userName || !userWhats}
+                disabled={!userEmail || !userName || !userWhats}
               >
                 Fazer o pedido
               </Button>

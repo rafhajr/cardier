@@ -84,8 +84,8 @@ tr:nth-child(even) {
   <tr>
     <td>Nome no cartão</td>
     <td>${
-      order.information.cardName ? order.information.cardName : 'SEM NOME'
-    }</td>
+  order.information.cardName ? order.information.cardName : 'SEM NOME'
+}</td>
   </tr>
   <tr>
     <td>Local do nome do cartão</td>

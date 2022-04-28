@@ -145,9 +145,7 @@ export const Menu = () => {
   return (
     <Flex h="60px" px="120" align="center" justify="center" py="41">
       <HStack spacing={158}>
-        <Box>
-        {isWideVersion ?  <MenuTab /> : <MenuMobileTab />}
-        </Box>
+        <Box>{isWideVersion ? <MenuTab /> : <MenuMobileTab />}</Box>
         {isWideVersion && (
           <Box>
             <MenuQuestionsButton />
