@@ -1,4 +1,46 @@
 export const email = (order: any) => {
+  const formatLocal = (code: number) => {
+    if (code === 0) {
+      return 'Não utilizar'
+    } else if (code === 1) {
+      return 'Frente'
+    } else if (code === 3) {
+      return 'Atrás'
+    } else {
+      return 'Não utilizar'
+    }
+  }
+
+  const formatMaterial = (code: string) => {
+    if (code === "black") {
+      return 'Black'
+    } else if (code === "white") {
+      return 'White'
+    } else if (code === "silver") {
+      return 'Silver'
+    } else if (code === "gold") {
+      return 'Gold'
+    } else if (code === "roseGold") {
+      return 'Rose Gold'
+    } else if (code === "blackGold") {
+      return 'Black Gold'
+    } else if (code === "rainbow") {
+      return 'Rainbow'
+    } else {
+      return 'Não utilizar'
+    }
+  }
+
+  const formatPrint = (code: string) => {
+    if (code === "dark") {
+      return 'Escuro'
+    } else if (code === "clear") {
+      return 'Claro'
+    } else {
+      return 'Escuro'
+    }
+  }
+
   return `
 <!DOCTYPE html>
 <html>
@@ -41,19 +83,21 @@ tr:nth-child(even) {
   </tr>
   <tr>
     <td>Nome no cartão</td>
-    <td>${order.userInformations.userName}</td>
+    <td>${
+      order.information.cardName ? order.information.cardName : 'SEM NOME'
+    }</td>
   </tr>
   <tr>
     <td>Local do nome do cartão</td>
-    <td>${order.userInformations.userName}</td>
+    <td>${formatLocal(order.information.cardNameLocal)}</td>
   </tr>
   <tr>
     <td>Local do número do cartão</td>
-    <td>${order.information.cardNumberLocal}</td>
+    <td>${formatLocal(order.information.cardNumberLocal)}</td>
   </tr>
   <tr>
     <td>Local da validade do cartão</td>
-    <td>${order.information.cardValidityLocal}</td>
+    <td>${formatLocal(order.information.cardValidityLocal)}</td>
   </tr>
 </table>
 
@@ -66,15 +110,15 @@ tr:nth-child(even) {
   </tr>
   <tr>
     <td>Material selecionado</td>
-    <td>${order.metal.materialSelected}</td>
+    <td>${formatMaterial(order.metal.materialSelected)}</td>
   </tr>
   <tr>
     <td>Impressão selecionada</td>
-    <td>${order.metal.printSelected}</td>
+    <td>${formatPrint(order.metal.printSelected)}</td>
   </tr>
   <tr>
     <td>Borda selecionada</td>
-    <td>${order.metal.borderSelected}</td>
+    <td>Borda 0${order.metal.borderSelected}</td>
   </tr>
 </table>
 
@@ -87,15 +131,15 @@ tr:nth-child(even) {
   </tr>
   <tr>
     <td>Texto personalizado</td>
-    <td>${order.design.customText}</td>
+    <td>${order.design.customText ? order.design.customText : "SEM TEXTO PERSONALIZADO"}</td>
   </tr>
   <tr>
     <td>Tamanho letra</td>
-    <td>${order.design.sizeValue}</td>
+    <td>${order.design.sizeValue} PX</td>
   </tr>
   <tr>
     <td>Tipografia</td>
-    <td>${order.design.typoValue}</td>
+    <td>Mont Serrat</td>
   </tr>
 </table>
 

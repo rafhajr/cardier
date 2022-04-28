@@ -7,42 +7,39 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   const { information, metal, design, userInformations, cardsImages } = order
 
   const transporter = nodemailer.createTransport({
-    service: 'hotmail',
+    host: 'smtp.hostinger.com',
+    port: 465,
+    secure: true,
     auth: {
-      user: 'rafhajunior@hotmail.com',
-      pass: '134679',
+      user: 'pedidos@usecardier.com.br',
+      pass: 'Use!Pedidos11',
     },
   })
 
   const emailHTML = email(order)
 
   var mailOptions = {
-    from: 'rafhajunior@hotmail.com',
-    to: 'rafhael.c.junior@gmail.com',
-    subject: `${userInformations.userName} - Pedido de cartão`,
+    from: 'pedidos@usecardier.com.br',
+    to: 'contato@usecardier.com.br ',
+    subject: `- Pedido de cartão - ${userInformations.userName} `,
     html: emailHTML,
-    // attachments: [
-    //   cardsImages.frontCardImage && {
-    //     // filename: 'CartaoFrente.jpg',
-    //     path: cardsImages.frontCardImage,
-    //   },
-    //   cardsImages.backCardImage && {
-    //     // filename: 'CartaoTras.jpg',
-    //     path: cardsImages.backCardImage,
-    //   },
-    //   design.file && { path: design.file },
-    //   design.flag && { path: design.flag },
-    // ],
+    attachments: [
+      cardsImages.frontCardImage && {
+        // filename: 'CartaoFrente.jpg',
+        path: cardsImages.frontCardImage,
+      },
+      cardsImages.backCardImage && {
+        // filename: 'CartaoTras.jpg',
+        path: cardsImages.backCardImage,
+      },
+    ],
   }
-
-  console.log(emailHTML)
-
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       console.log(error)
-      return res.status(404)
+      return res.status(400).json(error)
     } else {
-      console.log('caceta')
+      // console.log('caceta')
       return res.status(202).json('sucesso')
     }
   })

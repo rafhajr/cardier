@@ -85,10 +85,9 @@ function CardContextProvider({ children }: CardContextProviderProps) {
         order,
       })
 
-      console.log('opora')
-      console.log(data)
       setIsSuccess(true)
     } catch (err) {
+      console.log(err)
       setIsSuccess(false)
     } finally {
       setIsLoading(false)
