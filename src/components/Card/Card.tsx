@@ -8,8 +8,9 @@ import {
 } from '@/assets/Borders'
 import { Box, Flex, Image, Spacer, Text, VStack } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import Draggable from 'react-draggable'
+import { Rnd } from 'react-rnd'
 import { useCard } from 'src/hooks'
+
 interface ICardSkeleton {
   children: any
   ref?: HTMLDivElement | null
@@ -17,8 +18,16 @@ interface ICardSkeleton {
 }
 
 interface ITextProps {
-  top: string
-  left: string
+  top: string | number
+  left: string | number
+  fontSize?: string
+  fontSizeSmall?: string
+  disabled?: boolean
+}
+
+interface INameProps {
+  top: number
+  left: number
   fontSize?: string
   fontSizeSmall?: string
   disabled?: boolean
@@ -29,13 +38,9 @@ interface IPosition {
   y: number
 }
 
-interface IDraggable {
-  children: any
-  disabled?: boolean
-  position: IPosition
-  setPosition: (data: IPosition) => void
-  top: string
-  left: string
+interface ISize {
+  width: number | string
+  height: number | string
 }
 
 export const Card = () => {
@@ -56,12 +61,21 @@ export const Card = () => {
     backCardRef,
   } = useCard()
 
-  const [textPosition, setTextPosition] = useState<IPosition>({ x: 0, y: 0 })
-  const [namePosition, setNamePosition] = useState<IPosition>({ x: 0, y: 0 })
+  const [textPosition, setTextPosition] = useState<IPosition>({ x: 50, y: 50 })
+  const [namePosition, setNamePosition] = useState<IPosition>({ x: 100, y: 180 })
   const [imagePosition, setImagePosition] = useState<IPosition>({ x: 0, y: 0 })
   const [flagPosition, setFlagPosition] = useState<IPosition>({ x: 0, y: 0 })
+  const [flagValuePosition, setFlagValuePosition] = useState<IPosition>({
+    x: 0,
+    y: 0,
+  })
 
-  const [isMoving, setIsMoving] = useState<boolean>(false)
+  const [imageSize, setImageSize] = useState<ISize>({ width: 100, height: 100 })
+  const [flagSize, setFlagSize] = useState<ISize>({ width: 100, height: 100 })
+  const [flagValueSize, setFlagValueSize] = useState<ISize>({
+    width: 70,
+    height: 70,
+  })
 
   const textColor = () => {
     const materials: Record<string, string> = {
@@ -146,61 +160,26 @@ export const Card = () => {
     )
   }
 
-  const DraggableCard = ({
-    children,
-    disabled,
-    position,
-    setPosition,
-    top,
-    left,
-  }: IDraggable) => {
+  const NameCard = ({ top, left, fontSize, disabled }: INameProps) => {
     return (
-      <Draggable
-        position={{
-          x: disabled ? 0 : position.x,
-          y: disabled ? 0 : position.y,
-        }}
-        onStart={() => {
-          setIsMoving(true)
-        }}
-        onStop={(e, data) => {
-          setIsMoving(false)
-          setPosition({ x: data.x, y: data.y })
-          return false
+      <Rnd
+        disableDragging={disabled}
+        enableResizing={false}
+        position={
+          disabled
+            ? { x: left, y: top }
+            : { x: namePosition.x, y: namePosition.y }
+        }
+        onDragStop={(e, d) => {
+          setNamePosition({ x: d.x, y: d.y })
         }}
         bounds="parent"
-        disabled={disabled}
-      >
-        <Box
-          position="absolute"
-          top={top}
-          left={left}
-          _hover={{
-            border: '1px',
-            borderColor: isMoving ? '#C4C4C4' : '#A9A9A9',
-            borderStyle: 'dashed',
-            cursor: 'move',
-          }}
-        >
-          {children}
-        </Box>
-      </Draggable>
-    )
-  }
-
-  const NameCard = ({ top, left, fontSize, disabled }: ITextProps) => {
-    return (
-      <DraggableCard
-        position={namePosition}
-        disabled={disabled}
-        setPosition={setNamePosition}
-        top={top}
-        left={left}
+        className={disabled ? '' : 'card'}
       >
         <Text color={textColor()} fontSize={fontSize} userSelect="none">
           {cardName ? cardName : '(NAME HERE)'}
         </Text>
-      </DraggableCard>
+      </Rnd>
     )
   }
 
@@ -217,11 +196,14 @@ export const Card = () => {
     }
 
     return (
-      <DraggableCard
-        position={textPosition}
-        setPosition={setTextPosition}
-        top={top}
-        left={left}
+      <Rnd
+        enableResizing={false}
+        position={{ x: textPosition.x, y: textPosition.y }}
+        onDragStop={(e, d) => {
+          setTextPosition({ x: d.x, y: d.y })
+        }}
+        bounds="parent"
+        className={'card'}
       >
         <Text
           color={textColor()}
@@ -231,45 +213,63 @@ export const Card = () => {
         >
           {customText ? customText : '(CUSTOM TEXT HERE)'}
         </Text>
-      </DraggableCard>
+      </Rnd>
     )
   }
 
   const ImageCard = ({ top, left }: ITextProps) => {
     return (
-      <DraggableCard
-        position={imagePosition}
-        setPosition={setImagePosition}
-        top={top}
-        left={left}
+      <Rnd
+        size={{ width: imageSize.width, height: imageSize.height }}
+        position={{ x: imagePosition.x, y: imagePosition.y }}
+        onDragStop={(e, d) => {
+          setImagePosition({ x: d.x, y: d.y })
+        }}
+        onResizeStop={(e, direction, ref, delta, position) => {
+          setImageSize({
+            width: ref.style.width,
+            height: ref.style.height,
+            ...position,
+          })
+        }}
+        bounds="parent"
+        className="card"
       >
         <Image
-          w="100px"
           src={file}
           alt="customImage"
           userSelect="none"
           draggable="false"
         />
-      </DraggableCard>
+      </Rnd>
     )
   }
 
   const FlagCard = ({ top, left }: ITextProps) => {
     return (
-      <DraggableCard
-        position={flagPosition}
-        setPosition={setFlagPosition}
-        top={top}
-        left={left}
+      <Rnd
+        size={{ width: flagSize.width, height: flagSize.height }}
+        position={{ x: flagPosition.x, y: flagPosition.y }}
+        onDragStop={(e, d) => {
+          setFlagPosition({ x: d.x, y: d.y })
+        }}
+        onResizeStop={(e, direction, ref, delta, position) => {
+          setFlagSize({
+            width: ref.style.width,
+            height: ref.style.height,
+            ...position,
+          })
+        }}
+        bounds="parent"
+        className="card"
       >
         <Image
-          w="100px"
           src={flag}
           alt="customImage"
           userSelect="none"
           draggable="false"
         />
-      </DraggableCard>
+      </Rnd>
     )
   }
 
@@ -286,20 +286,29 @@ export const Card = () => {
     }
 
     return (
-      <DraggableCard
-        position={flagPosition}
-        setPosition={setFlagPosition}
-        top={top}
-        left={left}
+      <Rnd
+        size={{ width: flagValueSize.width, height: flagValueSize.height }}
+        position={{ x: flagValuePosition.x, y: flagValuePosition.y }}
+        onDragStop={(e, d) => {
+          setFlagValuePosition({ x: d.x, y: d.y })
+        }}
+        onResizeStop={(e, direction, ref, delta, position) => {
+          setFlagValueSize({
+            width: ref.style.width,
+            height: ref.style.height,
+            ...position,
+          })
+        }}
+        bounds="parent"
+        className="card"
       >
         <Image
-          w="70px"
           src={getFlags()}
           alt="customImage"
           userSelect="none"
           draggable="false"
         />
-      </DraggableCard>
+      </Rnd>
     )
   }
 
@@ -361,9 +370,7 @@ export const Card = () => {
           />
         )}
 
-        {cardNameLocal === 2 && (
-          <NameCard top="70%" left="20%" fontSize="18px" />
-        )}
+        {cardNameLocal === 2 && <NameCard top={70} left={20} fontSize="18px" />}
 
         {customText && <CustomTextCard top="10%" left="10%" />}
 
@@ -371,7 +378,7 @@ export const Card = () => {
 
         {flag && <FlagCard top="20%" left="50%" />}
 
-        {flagValue !== 1 && <FlagFileCard top="20%" left="50%"/>}
+        {flagValue !== 1 && <FlagFileCard top="20%" left="50%" />}
       </CardSkeleton>
     )
   }
@@ -428,7 +435,7 @@ export const Card = () => {
         )}
 
         {cardNameLocal === 3 && (
-          <NameCard top="78%" left="6%" fontSize="25px" disabled />
+          <NameCard top={215} left={20} fontSize="25px" disabled />
         )}
       </CardSkeleton>
     )

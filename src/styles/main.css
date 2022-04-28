@@ -3,3 +3,9 @@
 * {
   font-family: 'Montserrat', sans-serif;
 }
+
+.card:hover {
+  border: 1px;
+  border-color: #C4C4C4;
+  border-style: dashed;
+}
