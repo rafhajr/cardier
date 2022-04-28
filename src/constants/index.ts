@@ -1,23 +1,22 @@
 export const dataSizes = [
-  { value: 13, label: '13 px' },
+  { value: 9, label: '09 px' },
+  { value: 12, label: '12 px' },
   { value: 15, label: '15 px' },
-  { value: 17, label: '17 px' },
-  { value: 19, label: '19 px' },
-  { value: 21, label: '21 px' },
+  { value: 18, label: '18 px' },
+  { value: 20, label: '20 px' },
+  { value: 24, label: '24 px' },
+  { value: 26, label: '26 px' },
 ]
 
 export const dataTypos = [
-  { value: 1, label: 'Lota Grotesque' },
-  { value: 2, label: 'Arial' },
-  { value: 3, label: 'Times New Roman' },
-  { value: 4, label: 'Helvética' },
-  { value: 5, label: 'Times' },
+  { value: 1, label: 'Mont Serrat' },
 ]
 
 export const dataFlags = [
-  { value: 1, label: 'Mastercard' },
-  { value: 2, label: 'Visa' },
-  { value: 3, label: 'Elo' },
-  { value: 4, label: 'American Express' },
-  { value: 5, label: 'Hipercard' },
+  { value: 1, label: 'Sem Bandeira' },
+  { value: 2, label: 'Mastercard' },
+  { value: 3, label: 'Visa' },
+  { value: 4, label: 'Hipercard' },
+  { value: 5, label: 'Elo' },
+  { value: 6, label: 'American Express' },
 ]

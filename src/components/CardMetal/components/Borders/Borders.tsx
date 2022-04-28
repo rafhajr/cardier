@@ -31,12 +31,13 @@ export const Borders = ({ borderSelected, setBorderSelected }: IBorders) => {
     return (
       <GridItem textAlign="center">
         <Button
-          w="108px"
-          h="55px"
+          w="89px"
+          h="57px"
           border="1px"
           borderRadius="5px"
           borderColor={borderSelected === type ? '#000' : '#C4C4C4'}
           backgroundColor={borderSelected === type ? '#000' : '#fff'}
+          p="3px"
           onClick={() =>
             type === borderSelected
               ? setBorderSelected(0)
@@ -98,7 +99,7 @@ export const Borders = ({ borderSelected, setBorderSelected }: IBorders) => {
     <Grid
       templateColumns="repeat(3, 1fr)"
       h="200px"
-      w="500px"
+      w="400px"
       gap="10px"
       pt={19}
     >

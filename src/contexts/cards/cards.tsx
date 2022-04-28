@@ -13,7 +13,7 @@ function CardContextProvider({ children }: CardContextProviderProps) {
   const [currentTab, setCurrentTab] = useState<number>(1)
 
   const [customText, setCustomText] = useState<string>('')
-  const [sizeValue, setSizeValue] = useState<number>(1)
+  const [sizeValue, setSizeValue] = useState<number>(9)
   const [typoValue, setTypoValue] = useState<number>(1)
   const [flagValue, setFlagValue] = useState<number>(1)
   const [file, setFile] = useState<string>('')
@@ -110,7 +110,7 @@ function CardContextProvider({ children }: CardContextProviderProps) {
     setFlag('')
 
     setMaterialSelected('black') // black, white, silver, gold, roseGold, blackGold, Rainbow
-    setPrintSelected('dark') // dark, clear, colorful
+    setPrintSelected('dark') // dark, clear
     setBorderSelected(0)
 
     setIsOpen(false)

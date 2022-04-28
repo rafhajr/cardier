@@ -1,3 +1,4 @@
+import '@/styles/main.css'
 import { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 import { Router } from 'next/router'

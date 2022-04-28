@@ -1,5 +1,7 @@
 import { extendTheme } from '@chakra-ui/react'
 
+
+
 export const theme = extendTheme({
   styles: {
     global: {
@@ -12,6 +14,7 @@ export const theme = extendTheme({
         boxShadow: 'none',
       },
       body: {
+        fontFamily: "body",
         bg: '#FFFFFF',
         color: '#000000',
       },

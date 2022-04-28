@@ -51,6 +51,7 @@ export const Card = () => {
     typoValue,
     file,
     flag,
+    flagValue,
     frontCardRef,
     backCardRef,
   } = useCard()
@@ -88,7 +89,7 @@ export const Card = () => {
             <Image
               w="435px"
               h="275px"
-              src={`/FullMaterials/${materialSelected}.jpg`}
+              src={`/FullMaterials/${materialSelected}.png`}
               alt={materialSelected}
               borderRadius="24px"
               draggable="false"
@@ -272,6 +273,36 @@ export const Card = () => {
     )
   }
 
+  const FlagFileCard = ({ top, left }: ITextProps) => {
+    const getFlags = () => {
+      const flags: Record<number, string> = {
+        2: '/Flags/Mastercard.png',
+        3: '/Flags/Visa.png',
+        4: '/Flags/Hipercard.png',
+        5: '/Flags/Elo.png',
+        6: '/Flags/AmericanExpress.png',
+      }
+      return flags[flagValue] || '/Flags/Mastercard.png'
+    }
+
+    return (
+      <DraggableCard
+        position={flagPosition}
+        setPosition={setFlagPosition}
+        top={top}
+        left={left}
+      >
+        <Image
+          w="70px"
+          src={getFlags()}
+          alt="customImage"
+          userSelect="none"
+          draggable="false"
+        />
+      </DraggableCard>
+    )
+  }
+
   const FrontCard = () => {
     return (
       <CardSkeleton isFront>
@@ -339,6 +370,8 @@ export const Card = () => {
         {file && <ImageCard top="20%" left="50%" />}
 
         {flag && <FlagCard top="20%" left="50%" />}
+
+        {flagValue !== 1 && <FlagFileCard top="20%" left="50%"/>}
       </CardSkeleton>
     )
   }

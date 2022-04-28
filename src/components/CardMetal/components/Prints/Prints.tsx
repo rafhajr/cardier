@@ -56,13 +56,6 @@ export const Prints = ({ printSelected, setPrintSelected }: IPrints) => {
         printSelected={printSelected}
         setPrintSelected={setPrintSelected}
       />
-      <PrintButton
-        type="colorful"
-        label="Colorido"
-        printSelected={printSelected}
-        setPrintSelected={setPrintSelected}
-        disabled
-      />
     </VStack>
   )
 }
