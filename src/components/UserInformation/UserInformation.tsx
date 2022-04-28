@@ -35,19 +35,16 @@ export const UserInformation = () => {
 
   const [request, setRequest] = useState(false)
 
-  const handleButton = () => {
+  const handleRequest = () => {
     if (!isLoading && !isSuccess) {
       setRequest(true)
       orderCard()
     }
+  }
 
-    if (!isLoading && isSuccess && request) {
-      setRequest(true)
-      orderCard()
-
+  const handleReset = () => {
       reset()
       handleClose()
-    }
   }
 
   const handleClose = () => {
@@ -137,23 +134,52 @@ export const UserInformation = () => {
         </ModalBody>
 
         <ModalFooter>
-          <Button
-            isLoading={isLoading}
-            backgroundColor={'#E0BE74'}
-            color={'#272727'}
-            mr={3}
-            onClick={() => handleButton()}
-          >
-            {request && isSuccess ? 'Recomeçar do zero' : 'Fazer o pedido'}
-          </Button>
-          <Button
-            onClick={() => handleClose()}
-            backgroundColor={'#1A1A1A'}
-            color={'#fff'}
-            isLoading={isLoading}
-          >
-            {request && isSuccess ? 'Continuar editando' : 'Cancelar'}
-          </Button>
+          {!request && !isSuccess && (
+            <>
+              <Button
+                isLoading={isLoading}
+                backgroundColor={'#E0BE74'}
+                color={'#272727'}
+                mr={3}
+                onClick={() => handleRequest()}
+                disabled={ !userEmail || !userName || !userWhats}
+              >
+                Fazer o pedido
+              </Button>
+
+              <Button
+                onClick={() => handleClose()}
+                backgroundColor={'#1A1A1A'}
+                color={'#fff'}
+                isLoading={isLoading}
+              >
+                Cancelar
+              </Button>
+            </>
+          )}
+
+          {request && isSuccess && (
+            <>
+              <Button
+                isLoading={isLoading}
+                backgroundColor={'#E0BE74'}
+                color={'#272727'}
+                mr={3}
+                onClick={() => handleReset()}
+              >
+                Recomeçar do zero
+              </Button>
+
+              <Button
+                onClick={() => handleClose()}
+                backgroundColor={'#1A1A1A'}
+                color={'#fff'}
+                isLoading={isLoading}
+              >
+                Continuar editando
+              </Button>
+            </>
+          )}
         </ModalFooter>
       </ModalContent>
     </Modal>
