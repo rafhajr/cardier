@@ -9,21 +9,21 @@ export const Header = () => {
   return (
     <Flex
       as="header"
-      w="100%"
+      w={isWideVersion ? "100" : "105%"}
       // maxWidth={1480}
       h="60px"
       mx="auto"
-      px="150"
+      px="10%"
       align="center"
       color='#fff'
       backgroundColor='#000'
     >
       <Box>
-        <Image w="152.35px" h="16.4px" src="/title.png" alt="title" />
+        <Image w="100%" maxW="152.35px" src="/title.png" alt="title" />
       </Box>
       <Spacer />
       <Box>
-        <Image w="24px" h="21px" src="/new_logo.png" alt="logo" />
+        <Image w="100%" maxW="24px" src="/new_logo.png" alt="logo" />
       </Box>
     </Flex>
   )

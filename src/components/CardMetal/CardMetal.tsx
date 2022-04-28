@@ -1,5 +1,9 @@
 import { Typography } from '@/components/Typography'
-import { Box, Flex, Spacer } from '@chakra-ui/react'
+import {
+  Box,
+  Spacer,
+  Stack, useBreakpointValue
+} from '@chakra-ui/react'
 import React from 'react'
 import { useCard } from 'src/hooks'
 import { Borders, Materials, Prints } from './components'
@@ -14,13 +18,19 @@ export const CardMetal = () => {
     setBorderSelected,
   } = useCard()
 
+  const isWideVersion = useBreakpointValue({ base: false, lg: true })
+
   return (
-    <Box w="600px">
+    <Box w="100%" maxW="600px">
       <Box pt="10px">
         <Typography text="Metal" type="Title" />
       </Box>
 
-      <Flex pt="42px" pr="30px">
+      <Stack
+        spacing="2%"
+        direction={isWideVersion ? 'row' : 'column'}
+        // align="stretch"
+      >
         <Box>
           <Typography text="Material" type="Subtitle" />
           <Materials
@@ -36,7 +46,7 @@ export const CardMetal = () => {
             setPrintSelected={setPrintSelected}
           />
         </Box>
-      </Flex>
+      </Stack>
 
       <Box pt="29px">
         <Typography text="Borda" type="Subtitle" />

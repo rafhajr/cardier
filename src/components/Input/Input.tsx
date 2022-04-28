@@ -1,7 +1,7 @@
-import { Box, Input as ChakraInput } from '@chakra-ui/react'
+import { Box, Input as ChakraInput, InputProps as ChakraInputProps } from '@chakra-ui/react'
 import React from 'react'
 
-interface IInput {
+interface IInput extends ChakraInputProps{
   placeholder: string
   w?: string
   value: string
@@ -9,7 +9,7 @@ interface IInput {
   maxLenght?: number
 }
 
-export const Input = ({ placeholder, w, value, setValue, maxLenght }: IInput) => {
+export const Input = ({ placeholder, w, value, setValue, maxLenght, ...rest }: IInput) => {
   return (
     <Box pt="13px">
       <ChakraInput
@@ -26,6 +26,7 @@ export const Input = ({ placeholder, w, value, setValue, maxLenght }: IInput) =>
         onChange={(e) => setValue(e.target.value)}
         _placeholder={{ opacity: 1, color: '#1A1A1A' }}
         maxLength={maxLenght ? maxLenght : 100}
+        {...rest}
       />
     </Box>
   )

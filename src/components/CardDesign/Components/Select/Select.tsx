@@ -5,17 +5,19 @@ interface ISelect {
   w: string
   value: number
   setValue: (data: number) => void
+  maxW: string
   options: {
     value: number
     label: string
   }[]
 }
 
-export const Select = ({ w, options, value, setValue }: ISelect) => {
+export const Select = ({ w, options, value, setValue, maxW }: ISelect) => {
   return (
     <Box pt="13px">
       <ChackraSelect
         w={w}
+        maxW={maxW}
         value={value}
         fontSize="14px"
         fontWeight="bold"

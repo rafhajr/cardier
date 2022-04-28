@@ -6,11 +6,13 @@ import { HiOutlinePlusSm, HiTrash } from 'react-icons/hi'
 interface IDropZone {
   w: string
   h: string
+  maxW: string
+  maxH: string
   value: string
   setValue: (data: string) => void
 }
 
-export const DropZone = ({ w, h, value, setValue }: IDropZone) => {
+export const DropZone = ({ w, h, value, setValue, maxW, maxH }: IDropZone) => {
   const onDrop = (acceptedFiles: any[]) => {
     const fileAccetpted = acceptedFiles[0]
 
@@ -27,7 +29,9 @@ export const DropZone = ({ w, h, value, setValue }: IDropZone) => {
   return (
     <Box
       w={w}
+      maxW={maxW}
       h={h}
+      maxH={maxH}
       border="1px"
       borderStyle="dashed"
       borderColor="#C4C4C4"
@@ -38,13 +42,22 @@ export const DropZone = ({ w, h, value, setValue }: IDropZone) => {
         {...getRootProps()}
         w={w}
         h={h}
+        maxW={maxW}
+        maxH={maxH}
         alignItems="center"
         display="flex"
         justifyContent="center"
       >
         <input {...getInputProps()} accept="image/*" />
         {value ? (
-          <Image src={value} maxH={h} maxW={w} alt="Imagem Ponto" />
+          <Image
+            src={value}
+            w={w}
+            maxW={maxW}
+            h={h}
+            maxH={maxH}
+            alt="Imagem Ponto"
+          />
         ) : (
           <HiOutlinePlusSm size="30px" color="#A9A9A9" />
         )}

@@ -99,7 +99,8 @@ export const Borders = ({ borderSelected, setBorderSelected }: IBorders) => {
     <Grid
       templateColumns="repeat(3, 1fr)"
       h="200px"
-      w="400px"
+      w="100%"
+      maxW="400px"
       gap="10px"
       pt={19}
     >

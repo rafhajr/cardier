@@ -467,7 +467,7 @@ export const Card = () => {
 
   return (
     <VStack
-      w="445px"
+      w="440px"
       h="580px"
       display="flex"
       alignItems="center"

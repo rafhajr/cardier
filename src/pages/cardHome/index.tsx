@@ -6,33 +6,50 @@ import { Header } from '@/components/Header'
 import { Menu } from '@/components/Menu'
 import { NavigationButtons } from '@/components/NavigationButtons'
 import { UserInformation } from '@/components/UserInformation'
-import { Box, Flex, HStack, StackDivider } from '@chakra-ui/react'
+import {
+  Box,
+  Flex,
+  Stack,
+  StackDivider,
+  useBreakpointValue
+} from '@chakra-ui/react'
 import React from 'react'
 import { useCard } from 'src/hooks'
 
 const CardHome: React.FC = () => {
   const { currentTab } = useCard()
 
+  const isWideVersion = useBreakpointValue({ base: false, lg: true })
+
   return (
     <>
       <Header />
-      <Menu />
-      <Flex align="center" justify="center">
-        <HStack
-          divider={<StackDivider borderColor="gray.200" />}
-          spacing={50}
-          align="stretch"
+      {isWideVersion && <Menu />}
+      <Flex align="center" justify="center" w="100%">
+        <Stack
+          divider={
+            isWideVersion ? (
+              <StackDivider borderColor="gray.200" />
+            ) : (
+              <StackDivider borderColor="white" />
+            )
+          }
+          spacing="5%"
+          direction={isWideVersion ? 'row' : 'column'}
+          align="center"
         >
-          <Box >
+          <Box>
             <Card />
           </Box>
-          <Box >
+
+          {!isWideVersion && <Menu />}
+          <Box w="80%" alignSelf="center">
             {currentTab === 1 && <CardInformations />}
             {currentTab === 2 && <CardMetal />}
             {currentTab === 3 && <CardDesign />}
             <NavigationButtons />
           </Box>
-        </HStack>
+        </Stack>
       </Flex>
       <UserInformation />
     </>

@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, Image, Text } from '@chakra-ui/react'
+import { Box, Flex, Grid, Image, Text, useBreakpointValue } from '@chakra-ui/react'
 import React from 'react'
 
 interface IMaterial {
@@ -17,6 +17,8 @@ export const Materials = ({
   materialSelected,
   setMaterialSelected,
 }: IMaterials) => {
+  const isWideVersion = useBreakpointValue({ base: false, lg: true })
+
   const Material = ({
     type,
     name,
@@ -45,7 +47,7 @@ export const Materials = ({
   }
 
   return (
-    <Grid templateColumns="repeat(4, 1fr)" gap={30} pt={23}>
+    <Grid templateColumns={isWideVersion ? "repeat(4, 1fr)" : "repeat(4, 1fr)"} gap={5} pt={23}>
       <Material
         materialSelected={materialSelected}
         setMaterialSelected={setMaterialSelected}
