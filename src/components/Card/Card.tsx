@@ -62,7 +62,10 @@ export const Card = () => {
   } = useCard()
 
   const [textPosition, setTextPosition] = useState<IPosition>({ x: 50, y: 50 })
-  const [namePosition, setNamePosition] = useState<IPosition>({ x: 100, y: 180 })
+  const [namePosition, setNamePosition] = useState<IPosition>({
+    x: 100,
+    y: 180,
+  })
   const [imagePosition, setImagePosition] = useState<IPosition>({ x: 0, y: 0 })
   const [flagPosition, setFlagPosition] = useState<IPosition>({ x: 0, y: 0 })
   const [flagValuePosition, setFlagValuePosition] = useState<IPosition>({
@@ -99,7 +102,7 @@ export const Card = () => {
         userSelect="none"
       >
         <Box borderRadius="24px" position="relative">
-          <Box>
+          <Box w="435px" h="275px">
             <Image
               w="435px"
               h="275px"
@@ -107,6 +110,7 @@ export const Card = () => {
               alt={materialSelected}
               borderRadius="24px"
               draggable="false"
+              data-html2canvas-ignore="true"
             />
           </Box>
           {children}
@@ -121,6 +125,7 @@ export const Card = () => {
         position="absolute"
         top={top}
         left={left}
+        w="300px"
         transform="translate(-50%, -50%)"
       >
         <Text
@@ -128,6 +133,7 @@ export const Card = () => {
           fontSize={fontSize}
           draggable={false}
           userSelect="none"
+          // w="500px"
         >
           0000 0000 0000 0000
         </Text>
@@ -143,7 +149,7 @@ export const Card = () => {
         left={left}
         transform="translate(-50%, -50%)"
         alignItems="center"
-        justifyContent="center"
+        // justifyContent="center"
       >
         <Box pr="5px">
           <Text color={textColor()} fontSize={fontSizeSmall} userSelect="none">
@@ -321,7 +327,13 @@ export const Card = () => {
           left="20%"
           transform="translate(-50%, -50%)"
         >
-          <Image w="60px" src="/chip.png" alt="chip" draggable="false" />
+          <Image
+            w="60px"
+            src="/chip.png"
+            alt="chip"
+            draggable="false"
+            data-html2canvas-ignore="true"
+          />
         </Box>
 
         {borderSelected !== 0 && (
@@ -387,7 +399,12 @@ export const Card = () => {
     return (
       <CardSkeleton>
         <Box position="absolute" top="8%" left="0%">
-          <Image src="/magnetStripe.png" alt="magnetStripe" draggable="false" />
+          <Image
+            src="/magnetStripe.png"
+            alt="magnetStripe"
+            draggable="false"
+            data-html2canvas-ignore="true"
+          />
         </Box>
 
         <Box
@@ -397,7 +414,14 @@ export const Card = () => {
           transform="translate(-50%, -50%)"
         >
           <Flex>
-            <Box w="250px" h="50px" backgroundColor="#fff" />
+            <Box w="250px" h="50px">
+              <Box
+                w="250px"
+                h="50px"
+                backgroundColor="#fff"
+                data-html2canvas-ignore="true"
+              />
+            </Box>
             <Box pl="5px">
               <Text
                 color={textColor()}
@@ -422,7 +446,7 @@ export const Card = () => {
         </Box>
 
         {cardNumberLocal === 3 && (
-          <NumberCard top="60%" left="33.5%" fontSize="25px" />
+          <NumberCard top="60%" left="39%" fontSize="25px" />
         )}
 
         {cardValidityLocal === 3 && (
@@ -430,7 +454,7 @@ export const Card = () => {
             top="72%"
             left="17%"
             fontSize="25px"
-            fontSizeSmall="10px"
+            fontSizeSmall="8px"
           />
         )}
 
