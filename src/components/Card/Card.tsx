@@ -1,5 +1,11 @@
-import { Border1 } from '@/constants/BordersTypes/Border1'
-import { Border2 } from '@/constants/BordersTypes/Border2'
+import {
+  Border1,
+  Border2,
+  Border3,
+  Border4,
+  Border5,
+  Border6
+} from '@/assets/Borders'
 import { Box, Flex, Image, Spacer, Text, VStack } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import Draggable from 'react-draggable'
@@ -290,7 +296,23 @@ export const Card = () => {
             )}
 
             {borderSelected === 2 && (
-              <Border2 w="395px" h="270px" color={textColor()} />
+              <Border2 w="434.5px" h="297px" color={textColor()} />
+            )}
+
+            {borderSelected === 3 && (
+              <Border3 w="395px" h="270px" color={textColor()} />
+            )}
+
+            {borderSelected === 4 && (
+              <Border4 w="395px" h="270px" color={textColor()} />
+            )}
+
+            {borderSelected === 5 && (
+              <Border5 w="395px" h="270px" color={textColor()} />
+            )}
+
+            {borderSelected === 6 && (
+              <Border6 w="395px" h="270px" color={textColor()} />
             )}
           </Box>
         )}

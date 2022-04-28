@@ -1,9 +1,11 @@
-import { Border1 } from '@/constants/BordersTypes/Border1'
-import { Border2 } from '@/constants/BordersTypes/Border2'
-import { Border3Black, Border3White } from '@/constants/BordersTypes/Border3'
-import { Border4Black, Border4White } from '@/constants/BordersTypes/Border4'
-import { Border5Black, Border5White } from '@/constants/BordersTypes/Border5'
-import { Border6Black, Border6White } from '@/constants/BordersTypes/Border6'
+import {
+  Border1,
+  Border2,
+  Border3,
+  Border4,
+  Border5,
+  Border6
+} from '@/assets/Borders'
 import { Button, Grid, GridItem, Text } from '@chakra-ui/react'
 import React from 'react'
 
@@ -51,34 +53,38 @@ export const Borders = ({ borderSelected, setBorderSelected }: IBorders) => {
           )}
           {type === 2 && (
             <Border2
+              w="110%"
+              h="110%"
+              color={borderSelected === type ? '#fff' : '#000'}
+            />
+          )}
+          {type === 3 && (
+            <Border3
               w="100%"
               h="100%"
               color={borderSelected === type ? '#fff' : '#000'}
             />
           )}
-          {type === 3 && borderSelected === type && (
-            <Border3White w="100%" h="100%" />
+          {type === 4 && (
+            <Border4
+              w="100%"
+              h="100%"
+              color={borderSelected === type ? '#fff' : '#000'}
+            />
           )}
-          {type === 3 && borderSelected !== type && (
-            <Border3Black w="100%" h="100%" />
+          {type === 5 && (
+            <Border5
+              w="100%"
+              h="100%"
+              color={borderSelected === type ? '#fff' : '#000'}
+            />
           )}
-          {type === 4 && borderSelected === type && (
-            <Border4White w="100%" h="100%" />
-          )}
-          {type === 4 && borderSelected !== type && (
-            <Border4Black w="100%" h="100%" />
-          )}
-          {type === 5 && borderSelected === type && (
-            <Border5White w="100%" h="100%" />
-          )}
-          {type === 5 && borderSelected !== type && (
-            <Border5Black w="100%" h="100%" />
-          )}
-          {type === 6 && borderSelected === type && (
-            <Border6White w="100%" h="100%" />
-          )}
-          {type === 6 && borderSelected !== type && (
-            <Border6Black w="100%" h="100%" />
+          {type === 6 && (
+            <Border6
+              w="100%"
+              h="100%"
+              color={borderSelected === type ? '#fff' : '#000'}
+            />
           )}
         </Button>
         <Text pt="7px" color="#A9A9A9" fontSize="14px" alignSelf="center">
@@ -100,37 +106,37 @@ export const Borders = ({ borderSelected, setBorderSelected }: IBorders) => {
         borderSelected={borderSelected}
         setBorderSelected={setBorderSelected}
         type={1}
-        name="Nome do estilo"
+        name="Borda 01"
       />
       <BorderButton
         borderSelected={borderSelected}
         setBorderSelected={setBorderSelected}
         type={2}
-        name="Nome do estilo"
+        name="Borda 02"
       />
       <BorderButton
         borderSelected={borderSelected}
         setBorderSelected={setBorderSelected}
         type={3}
-        name="Nome do estilo"
+        name="Borda 03"
       />
       <BorderButton
         borderSelected={borderSelected}
         setBorderSelected={setBorderSelected}
         type={4}
-        name="Nome do estilo"
+        name="Borda 04"
       />
       <BorderButton
         borderSelected={borderSelected}
         setBorderSelected={setBorderSelected}
         type={5}
-        name="Nome do estilo"
+        name="Borda 05"
       />
       <BorderButton
         borderSelected={borderSelected}
         setBorderSelected={setBorderSelected}
         type={6}
-        name="Nome do estilo"
+        name="Borda 06"
       />
     </Grid>
   )
