@@ -71,7 +71,12 @@ export const Card = () => {
 
   const CardSkeleton = ({ children, isFront }: ICardSkeleton) => {
     return (
-      <Box w="435px" h="275px" ref={isFront ? frontCardRef : backCardRef}  userSelect="none">
+      <Box
+        w="435px"
+        h="275px"
+        ref={isFront ? frontCardRef : backCardRef}
+        userSelect="none"
+      >
         <Box borderRadius="24px" position="relative">
           <Box>
             <Image
@@ -81,7 +86,6 @@ export const Card = () => {
               alt={materialSelected}
               borderRadius="24px"
               draggable="false"
-
             />
           </Box>
           {children}
@@ -186,11 +190,7 @@ export const Card = () => {
         top={top}
         left={left}
       >
-        <Text
-          color={textColor()}
-          fontSize={fontSize}
-          userSelect="none"
-        >
+        <Text color={textColor()} fontSize={fontSize} userSelect="none">
           {cardName ? cardName : '(NAME HERE)'}
         </Text>
       </DraggableCard>
@@ -236,7 +236,13 @@ export const Card = () => {
         top={top}
         left={left}
       >
-        <Image w="100px" src={file} alt="customImage" />
+        <Image
+          w="100px"
+          src={file}
+          alt="customImage"
+          userSelect="none"
+          draggable="false"
+        />
       </DraggableCard>
     )
   }
@@ -249,7 +255,13 @@ export const Card = () => {
         top={top}
         left={left}
       >
-        <Image w="100px" src={flag} alt="customImage" />
+        <Image
+          w="100px"
+          src={flag}
+          alt="customImage"
+          userSelect="none"
+          draggable="false"
+        />
       </DraggableCard>
     )
   }

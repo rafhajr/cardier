@@ -58,4 +58,16 @@ export type CardContextData = {
   orderCard: () => Promise<void>
   frontCardRef: RefObject<HTMLDivElement>
   backCardRef: RefObject<HTMLDivElement>
+  isOpen: boolean
+  setIsOpen: (data: boolean) => void
+  userName: string
+  setUserName: (data: string) => void
+  userEmail: string
+  setUserEmail: (data: string) => void
+  userWhats: string
+  setUserWhats: (data: string) => void
+  isLoading: boolean
+  isSuccess: boolean
+  setIsSuccess:  (data: boolean) => void
+  reset: () => void
 }

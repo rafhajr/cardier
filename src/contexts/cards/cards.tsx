@@ -26,55 +26,100 @@ function CardContextProvider({ children }: CardContextProviderProps) {
   const frontCardRef = useRef<HTMLDivElement>(null)
   const backCardRef = useRef<HTMLDivElement>(null)
 
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const [userName, setUserName] = useState<string>('')
+  const [userEmail, setUserEmail] = useState<string>('')
+  const [userWhats, setUserWhats] = useState<string>('')
+
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isSuccess, setIsSuccess] = useState<boolean>(false)
+
   const orderCard = async (): Promise<void> => {
+    setIsLoading(true)
     const frontCardImage = await takeScreenshot(frontCardRef.current)
     const backCardImage = await takeScreenshot(backCardRef.current)
 
     const information = {
-      Nome: cardName,
-      'Local do nome': cardNameLocal,
-      'Local do número': cardNumberLocal,
-      'Local da validade': cardValidityLocal,
+      cardName,
+      cardNameLocal,
+      cardNumberLocal,
+      cardValidityLocal,
     }
 
     const metal = {
-      Material: materialSelected,
-      Impressão: printSelected,
-      Borda: borderSelected,
+      materialSelected,
+      printSelected,
+      borderSelected,
     }
 
     const design = {
-      'Texto personalizado': customText,
-      'Tamanho do texo': sizeValue,
-      'Tipografia do texto': typoValue,
-      Imagem: file,
-      Bandeira: flagValue,
-      'Imagem Bandeira': flag,
+      customText,
+      sizeValue,
+      typoValue,
+      file,
+      flagValue,
+      flag,
     }
 
     const cardsImages = {
-       frontCardImage,
-       backCardImage,
+      frontCardImage,
+      backCardImage,
+    }
+
+    const userInformations = {
+      userName,
+      userEmail,
+      userWhats,
     }
 
     const order = {
       information,
       metal,
       design,
+      userInformations,
       cardsImages,
     }
 
     try {
-      const { data: newData } = await api.post<any>('api/send', {
+      const { data } = await api.post<any>('api/send', {
         order,
       })
 
-      console.log(newData)
+      console.log('opora')
+      console.log(data)
+      setIsSuccess(true)
     } catch (err) {
-      console.log(err)
+      setIsSuccess(false)
     } finally {
-      console.log('uepa')
+      setIsLoading(false)
     }
+  }
+
+  const reset = () => {
+    setCardName('')
+    setCardNameLocal(2) //1 = dont use, 2 = front, 3 = back
+    setCardNumberLocal(2) //1 = dont use, 2 = front, 3 = back
+    setCardValidityLocal(3) //1 = dont use, 2 = front, 3 = back
+    setCurrentTab(1)
+
+    setCustomText('')
+    setSizeValue(1)
+    setTypoValue(1)
+    setFlagValue(1)
+    setFile('')
+    setFlag('')
+
+    setMaterialSelected('black') // black, white, silver, gold, roseGold, blackGold, Rainbow
+    setPrintSelected('dark') // dark, clear, colorful
+    setBorderSelected(0)
+
+    setIsOpen(false)
+    setUserName('')
+    setUserEmail('')
+    setUserWhats('')
+
+    setIsLoading(false)
+    setIsSuccess(false)
   }
 
   const value = useMemo(
@@ -110,6 +155,18 @@ function CardContextProvider({ children }: CardContextProviderProps) {
       orderCard,
       frontCardRef,
       backCardRef,
+      isOpen,
+      setIsOpen,
+      userName,
+      setUserName,
+      userEmail,
+      setUserEmail,
+      userWhats,
+      setUserWhats,
+      isLoading,
+      isSuccess,
+      setIsSuccess,
+      reset,
     }),
     [
       cardName,
@@ -143,6 +200,19 @@ function CardContextProvider({ children }: CardContextProviderProps) {
       orderCard,
       frontCardRef,
       backCardRef,
+      isOpen,
+      isOpen,
+      setIsOpen,
+      userName,
+      setUserName,
+      userEmail,
+      setUserEmail,
+      userWhats,
+      setUserWhats,
+      isLoading,
+      isSuccess,
+      setIsSuccess,
+      reset,
     ]
   )
 

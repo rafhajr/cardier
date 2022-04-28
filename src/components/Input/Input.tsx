@@ -3,7 +3,7 @@ import React from 'react'
 
 interface IInput {
   placeholder: string
-  w: string
+  w?: string
   value: string
   setValue: (data: string) => void
   maxLenght?: number

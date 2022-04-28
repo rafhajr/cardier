@@ -5,6 +5,7 @@ import { CardMetal } from '@/components/CardMetal'
 import { Header } from '@/components/Header'
 import { Menu } from '@/components/Menu'
 import { NavigationButtons } from '@/components/NavigationButtons'
+import { UserInformation } from '@/components/UserInformation'
 import { Box, Flex, HStack, StackDivider } from '@chakra-ui/react'
 import React from 'react'
 import { useCard } from 'src/hooks'
@@ -33,6 +34,7 @@ const CardHome: React.FC = () => {
           </Box>
         </HStack>
       </Flex>
+      <UserInformation />
     </>
   )
 }
