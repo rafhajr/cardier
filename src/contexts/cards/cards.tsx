@@ -30,6 +30,7 @@ function CardContextProvider({ children }: CardContextProviderProps) {
   const [userName, setUserName] = useState<string>('')
   const [userEmail, setUserEmail] = useState<string>('')
   const [userWhats, setUserWhats] = useState<string>('')
+  const [senderChecked, setSenderChecked] = useState<string>('0')
 
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [isSuccess, setIsSuccess] = useState<boolean>(false)
@@ -70,6 +71,7 @@ function CardContextProvider({ children }: CardContextProviderProps) {
       userName,
       userEmail,
       userWhats,
+      senderChecked
     }
 
     const order = {
@@ -116,6 +118,7 @@ function CardContextProvider({ children }: CardContextProviderProps) {
     setUserName('')
     setUserEmail('')
     setUserWhats('')
+    setSenderChecked('0')
 
     setIsLoading(false)
     setIsSuccess(false)
@@ -166,6 +169,8 @@ function CardContextProvider({ children }: CardContextProviderProps) {
       isSuccess,
       setIsSuccess,
       reset,
+      senderChecked,
+      setSenderChecked,
     }),
     [
       cardName,
@@ -212,6 +217,8 @@ function CardContextProvider({ children }: CardContextProviderProps) {
       isSuccess,
       setIsSuccess,
       reset,
+      senderChecked,
+      setSenderChecked,
     ]
   )
 

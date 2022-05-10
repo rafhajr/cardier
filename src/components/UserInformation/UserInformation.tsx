@@ -9,6 +9,8 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Radio,
+  RadioGroup,
   Spinner,
   Text
 } from '@chakra-ui/react'
@@ -31,6 +33,8 @@ export const UserInformation = () => {
     isSuccess,
     setIsSuccess,
     reset,
+    senderChecked,
+    setSenderChecked,
   } = useCard()
 
   const [request, setRequest] = useState(false)
@@ -56,7 +60,7 @@ export const UserInformation = () => {
   return (
     <Modal isOpen={isOpen} onClose={() => handleClose()}>
       <ModalOverlay />
-      <ModalContent h="500px">
+      <ModalContent h="600px">
         <ModalHeader>Fazer pedido</ModalHeader>
 
         <ModalCloseButton />
@@ -103,6 +107,22 @@ export const UserInformation = () => {
                   value={userWhats}
                   setValue={setUserWhats}
                 />
+              </Box>
+              <Box pt="29px">
+                <Typography text="Como quer fazer?" type="Subtitle" />
+                <RadioGroup
+                  onChange={setSenderChecked}
+                  value={senderChecked}
+                  pt="5px"
+                  colorScheme="gray"
+                >
+                  <Radio value="0" _focus={{ boxShadow: 'none' }}>
+                    Você envia o chip e nos colocamos
+                  </Radio>
+                  <Radio value="1" _focus={{ boxShadow: 'none' }}>
+                    Nos enviamos o cartão e você coloca o chip
+                  </Radio>
+                </RadioGroup>
               </Box>
             </Box>
           )}

@@ -68,6 +68,8 @@ export type CardContextData = {
   setUserWhats: (data: string) => void
   isLoading: boolean
   isSuccess: boolean
-  setIsSuccess:  (data: boolean) => void
+  setIsSuccess: (data: boolean) => void
   reset: () => void
+  senderChecked: string
+  setSenderChecked: (data: string) => void
 }

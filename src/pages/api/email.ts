@@ -162,6 +162,10 @@ tr:nth-child(even) {
     <td>Celular</td>
     <td>${order.userInformations.userWhats}</td>
   </tr>
+  <tr>
+    <td>Chip</td>
+    <td>${order.userInformations.senderChecked === 0 ? 'Colocamos o chip' : 'Cliente coloca o chip'}</td>
+  </tr>
 </table>
 
 </body>
