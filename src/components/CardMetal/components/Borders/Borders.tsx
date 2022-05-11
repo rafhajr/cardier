@@ -89,14 +89,14 @@ export const Borders = ({ borderSelected, setBorderSelected }: IBorders) => {
               color={borderSelected === type ? '#fff' : '#000'}
             />
           )}
-           {type === 7 && (
+          {type === 7 && (
             <Border7
               w="100%"
               h="100%"
               color={borderSelected === type ? '#fff' : '#000'}
             />
           )}
-           {type === 8 && (
+          {type === 8 && (
             <Border8
               w="100%"
               h="100%"
