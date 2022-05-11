@@ -323,21 +323,6 @@ export const Card = () => {
   const FrontCard = () => {
     return (
       <CardSkeleton isFront>
-        <Box
-          position="absolute"
-          top="40%"
-          left="20%"
-          transform="translate(-50%, -50%)"
-        >
-          <Image
-            w="60px"
-            src="/chip.png"
-            alt="chip"
-            draggable="false"
-            data-html2canvas-ignore="true"
-          />
-        </Box>
-
         {borderSelected !== 0 && (
           <Box
             position="absolute"
@@ -401,6 +386,21 @@ export const Card = () => {
         {flag && <FlagCard top="20%" left="50%" />}
 
         {flagValue !== 1 && <FlagFileCard top="20%" left="50%" />}
+
+        <Box
+          position="absolute"
+          top="40%"
+          left="20%"
+          transform="translate(-50%, -50%)"
+        >
+          <Image
+            w="60px"
+            src="/chip.png"
+            alt="chip"
+            draggable="false"
+            data-html2canvas-ignore="true"
+          />
+        </Box>
       </CardSkeleton>
     )
   }
