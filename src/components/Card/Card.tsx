@@ -4,7 +4,9 @@ import {
   Border3,
   Border4,
   Border5,
-  Border6
+  Border6,
+  Border7,
+  Border8
 } from '@/assets/Borders'
 import { Box, Flex, Image, Spacer, Text, VStack } from '@chakra-ui/react'
 import React, { useState } from 'react'
@@ -365,6 +367,14 @@ export const Card = () => {
 
             {borderSelected === 6 && (
               <Border6 w="395px" h="270px" color={textColor()} />
+            )}
+
+            {borderSelected === 7 && (
+              <Border7 w="395px" h="270px" color={textColor()} />
+            )}
+
+            {borderSelected === 8 && (
+              <Border8 w="395px" h="270px" color={textColor()} />
             )}
           </Box>
         )}

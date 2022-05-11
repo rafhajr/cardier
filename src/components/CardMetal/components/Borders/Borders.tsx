@@ -4,7 +4,9 @@ import {
   Border3,
   Border4,
   Border5,
-  Border6
+  Border6,
+  Border7,
+  Border8
 } from '@/assets/Borders'
 import { Button, Grid, GridItem, Text } from '@chakra-ui/react'
 import React from 'react'
@@ -87,6 +89,20 @@ export const Borders = ({ borderSelected, setBorderSelected }: IBorders) => {
               color={borderSelected === type ? '#fff' : '#000'}
             />
           )}
+           {type === 7 && (
+            <Border7
+              w="100%"
+              h="100%"
+              color={borderSelected === type ? '#fff' : '#000'}
+            />
+          )}
+           {type === 8 && (
+            <Border8
+              w="100%"
+              h="100%"
+              color={borderSelected === type ? '#fff' : '#000'}
+            />
+          )}
         </Button>
         <Text pt="7px" color="#A9A9A9" fontSize="14px" alignSelf="center">
           {name}
@@ -97,7 +113,7 @@ export const Borders = ({ borderSelected, setBorderSelected }: IBorders) => {
 
   return (
     <Grid
-      templateColumns="repeat(3, 1fr)"
+      templateColumns="repeat(4, 1fr)"
       h="200px"
       w="100%"
       maxW="400px"
@@ -139,6 +155,18 @@ export const Borders = ({ borderSelected, setBorderSelected }: IBorders) => {
         setBorderSelected={setBorderSelected}
         type={6}
         name="Borda 06"
+      />
+      <BorderButton
+        borderSelected={borderSelected}
+        setBorderSelected={setBorderSelected}
+        type={7}
+        name="Borda 07"
+      />
+      <BorderButton
+        borderSelected={borderSelected}
+        setBorderSelected={setBorderSelected}
+        type={8}
+        name="Borda 08"
       />
     </Grid>
   )
