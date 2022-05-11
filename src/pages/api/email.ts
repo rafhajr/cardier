@@ -1,10 +1,10 @@
 export const email = (order: any) => {
   const formatLocal = (code: number) => {
-    if (code === 0) {
+    if (code === 3) {
       return 'Não utilizar'
     } else if (code === 1) {
       return 'Frente'
-    } else if (code === 3) {
+    } else if (code === 2) {
       return 'Atrás'
     } else {
       return 'Não utilizar'

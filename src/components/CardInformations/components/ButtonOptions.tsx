@@ -39,20 +39,20 @@ export const ButtonOptions = ({ value, setValue }: IButtonOptions) => {
       <ButtonOption
         selected={value === 1}
         onClick={() => setValue(1)}
-        icon={<BiBlock />}
-        label="Não utilizar"
-      />
-      <ButtonOption
-        selected={value === 2}
-        onClick={() => setValue(2)}
         icon={<BiCreditCardAlt />}
         label="Frente"
       />
       <ButtonOption
-        selected={value === 3}
-        onClick={() => setValue(3)}
+        selected={value === 2}
+        onClick={() => setValue(2)}
         icon={<MdCreditCard />}
         label="Atrás"
+      />
+      <ButtonOption
+        selected={value === 3}
+        onClick={() => setValue(3)}
+        icon={<BiBlock />}
+        label="Não utilizar"
       />
     </Stack>
   )

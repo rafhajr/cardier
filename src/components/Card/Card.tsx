@@ -364,11 +364,11 @@ export const Card = () => {
           </Box>
         )}
 
-        {cardNumberLocal === 2 && (
-          <NumberCard top="52%" left="47%" fontSize="20px" />
+        {cardNumberLocal === 1 && (
+          <NumberCard top="52%" left="57%" fontSize="20px" />
         )}
 
-        {cardValidityLocal === 2 && (
+        {cardValidityLocal === 1 && (
           <ValidityCard
             top="61%"
             left="47%"
@@ -377,7 +377,7 @@ export const Card = () => {
           />
         )}
 
-        {cardNameLocal === 2 && <NameCard top={70} left={20} fontSize="18px" />}
+        {cardNameLocal === 1 && <NameCard top={70} left={20} fontSize="18px" />}
 
         {customText && <CustomTextCard top="10%" left="10%" />}
 
@@ -455,11 +455,11 @@ export const Card = () => {
           </Flex>
         </Box>
 
-        {cardNumberLocal === 3 && (
+        {cardNumberLocal === 2 && (
           <NumberCard top="60%" left="39%" fontSize="25px" />
         )}
 
-        {cardValidityLocal === 3 && (
+        {cardValidityLocal === 2 && (
           <ValidityCard
             top="72%"
             left="17%"
@@ -468,7 +468,7 @@ export const Card = () => {
           />
         )}
 
-        {cardNameLocal === 3 && (
+        {cardNameLocal === 2 && (
           <NameCard top={215} left={20} fontSize="25px" disabled />
         )}
       </CardSkeleton>

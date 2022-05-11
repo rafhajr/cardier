@@ -7,9 +7,9 @@ const CardContext = createContext({} as CardContextData)
 
 function CardContextProvider({ children }: CardContextProviderProps) {
   const [cardName, setCardName] = useState<string>('')
-  const [cardNameLocal, setCardNameLocal] = useState<number>(2) //1 = dont use, 2 = front, 3 = back
-  const [cardNumberLocal, setCardNumberLocal] = useState<number>(2) //1 = dont use, 2 = front, 3 = back
-  const [cardValidityLocal, setCardValidityLocal] = useState<number>(3) //1 = dont use, 2 = front, 3 = back
+  const [cardNameLocal, setCardNameLocal] = useState<number>(1) //1 = front, 2 = back, 3 = dont use
+  const [cardNumberLocal, setCardNumberLocal] = useState<number>(1) //1 = front, 2 = back, 3 = dont use
+  const [cardValidityLocal, setCardValidityLocal] = useState<number>(2) //1 = front, 2 = back, 3 = dont use
   const [currentTab, setCurrentTab] = useState<number>(1)
 
   const [customText, setCustomText] = useState<string>('')
