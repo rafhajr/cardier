@@ -48,7 +48,7 @@ export const NavigationButtons = () => {
               <Spacer />
             </>
           )}
-          {currentTab !== 1 && (
+          {currentTab === 3 && (
             <ButtonStyled
               label="Solicitar cartão"
               bc="#E0BE74"
@@ -69,7 +69,7 @@ export const NavigationButtons = () => {
               onClick={() => setCurrentTab(currentTab + 1)}
             />
           )}
-          {currentTab !== 1 && (
+          {currentTab === 3 && (
             <ButtonStyled
               label="Solicitar cartão"
               bc="#E0BE74"
