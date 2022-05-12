@@ -16,7 +16,6 @@ function CardContextProvider({ children }: CardContextProviderProps) {
   const [sizeValue, setSizeValue] = useState<number>(9)
   const [typoValue, setTypoValue] = useState<number>(1)
   const [flagValue, setFlagValue] = useState<number>(1)
-  const [file, setFile] = useState<string>('')
   const [flag, setFlag] = useState<string>('')
 
   const [materialSelected, setMaterialSelected] = useState('black') // black, white, silver, gold, roseGold, blackGold, Rainbow
@@ -57,7 +56,6 @@ function CardContextProvider({ children }: CardContextProviderProps) {
       customText,
       sizeValue,
       typoValue,
-      file,
       flagValue,
       flag,
     }
@@ -71,7 +69,7 @@ function CardContextProvider({ children }: CardContextProviderProps) {
       userName,
       userEmail,
       userWhats,
-      senderChecked
+      senderChecked,
     }
 
     const order = {
@@ -107,7 +105,6 @@ function CardContextProvider({ children }: CardContextProviderProps) {
     setSizeValue(1)
     setTypoValue(1)
     setFlagValue(1)
-    setFile('')
     setFlag('')
 
     setMaterialSelected('black') // black, white, silver, gold, roseGold, blackGold, Rainbow
@@ -144,8 +141,6 @@ function CardContextProvider({ children }: CardContextProviderProps) {
       setTypoValue,
       flagValue,
       setFlagValue,
-      file,
-      setFile,
       flag,
       setFlag,
       materialSelected,
@@ -191,8 +186,6 @@ function CardContextProvider({ children }: CardContextProviderProps) {
       setTypoValue,
       flagValue,
       setFlagValue,
-      file,
-      setFile,
       flag,
       setFlag,
       materialSelected,

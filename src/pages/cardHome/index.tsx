@@ -38,7 +38,7 @@ const CardHome: React.FC = () => {
           direction={isWideVersion ? 'row' : 'column'}
           align="center"
         >
-          <Box>
+          <Box alignSelf="flex-start" pt="10px">
             <Card />
           </Box>
 

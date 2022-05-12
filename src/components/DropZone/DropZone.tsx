@@ -10,9 +10,22 @@ interface IDropZone {
   maxH: string
   value: string
   setValue: (data: string) => void
+  pt: string
+  deleteValue: () => void
+  index?: number
 }
 
-export const DropZone = ({ w, h, value, setValue, maxW, maxH }: IDropZone) => {
+export const DropZone = ({
+  w,
+  h,
+  value,
+  setValue,
+  maxW,
+  maxH,
+  pt,
+  deleteValue,
+  index,
+}: IDropZone) => {
   const onDrop = (acceptedFiles: any[]) => {
     const fileAccetpted = acceptedFiles[0]
 
@@ -37,6 +50,8 @@ export const DropZone = ({ w, h, value, setValue, maxW, maxH }: IDropZone) => {
       borderColor="#C4C4C4"
       borderRadius="10px"
       position="relative"
+      pt={pt}
+      key={index}
     >
       <Box
         {...getRootProps()}
@@ -44,20 +59,26 @@ export const DropZone = ({ w, h, value, setValue, maxW, maxH }: IDropZone) => {
         h={h}
         maxW={maxW}
         maxH={maxH}
+        border="1px"
+        borderStyle="dashed"
+        borderColor="#C4C4C4"
+        borderRadius="10px"
         alignItems="center"
         display="flex"
         justifyContent="center"
+        backgroundColor={value && '#C4C4C4'}
       >
         <input {...getInputProps()} accept="image/*" />
         {value ? (
-          <Image
-            src={value}
-            w={w}
-            maxW={maxW}
-            h={h}
-            maxH={maxH}
-            alt="Imagem Ponto"
-          />
+          <Box>
+            <Image
+              src={value}
+              maxW={maxW}
+              maxH={maxH}
+              // boxSize="80%"
+              alt="Imagem Customizado"
+            />
+          </Box>
         ) : (
           <HiOutlinePlusSm size="30px" color="#A9A9A9" />
         )}
@@ -71,7 +92,7 @@ export const DropZone = ({ w, h, value, setValue, maxW, maxH }: IDropZone) => {
             border="1px"
             borderColor="#A9A9A9"
             borderRadius="10px"
-            onClick={() => setValue('')}
+            onClick={() => deleteValue()}
             backgroundColor="#fff"
             // w="50px"
             // width="20px"

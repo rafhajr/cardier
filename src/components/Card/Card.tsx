@@ -11,7 +11,8 @@ import {
 import { Box, Flex, Image, Spacer, Text, VStack } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { Rnd } from 'react-rnd'
-import { useCard } from 'src/hooks'
+import { useCard, useImages } from 'src/hooks'
+import { CustomImage } from './Images'
 
 interface ICardSkeleton {
   children: any
@@ -25,6 +26,12 @@ interface ITextProps {
   fontSize?: string
   fontSizeSmall?: string
   disabled?: boolean
+}
+
+interface IImageProps {
+  file: string
+  x?: number
+  y?: number
 }
 
 interface INameProps {
@@ -41,8 +48,8 @@ interface IPosition {
 }
 
 interface ISize {
-  width: number | string
-  height: number | string
+  width: string
+  height: string
 }
 
 export const Card = () => {
@@ -56,30 +63,39 @@ export const Card = () => {
     customText,
     sizeValue,
     typoValue,
-    file,
     flag,
     flagValue,
     frontCardRef,
     backCardRef,
   } = useCard()
 
+  const {
+    files,
+    resizeFile,
+    moveFile,
+    projectsReady,
+    resizeProjectsReady,
+    moveProjectsReady,
+  } = useImages()
+
   const [textPosition, setTextPosition] = useState<IPosition>({ x: 50, y: 50 })
   const [namePosition, setNamePosition] = useState<IPosition>({
     x: 100,
     y: 180,
   })
-  const [imagePosition, setImagePosition] = useState<IPosition>({ x: 0, y: 0 })
   const [flagPosition, setFlagPosition] = useState<IPosition>({ x: 0, y: 0 })
   const [flagValuePosition, setFlagValuePosition] = useState<IPosition>({
     x: 0,
     y: 0,
   })
 
-  const [imageSize, setImageSize] = useState<ISize>({ width: 100, height: 100 })
-  const [flagSize, setFlagSize] = useState<ISize>({ width: 100, height: 100 })
+  const [flagSize, setFlagSize] = useState<ISize>({
+    width: '100',
+    height: '100',
+  })
   const [flagValueSize, setFlagValueSize] = useState<ISize>({
-    width: 70,
-    height: 70,
+    width: '100',
+    height: '100',
   })
 
   const textColor = () => {
@@ -225,38 +241,13 @@ export const Card = () => {
     )
   }
 
-  const ImageCard = ({ top, left }: ITextProps) => {
-    return (
-      <Rnd
-        size={{ width: imageSize.width, height: imageSize.height }}
-        position={{ x: imagePosition.x, y: imagePosition.y }}
-        onDragStop={(e, d) => {
-          setImagePosition({ x: d.x, y: d.y })
-        }}
-        onResizeStop={(e, direction, ref, delta, position) => {
-          setImageSize({
-            width: ref.style.width,
-            height: ref.style.height,
-            ...position,
-          })
-        }}
-        bounds="parent"
-        className="card"
-      >
-        <Image
-          src={file}
-          alt="customImage"
-          userSelect="none"
-          draggable="false"
-        />
-      </Rnd>
-    )
-  }
-
   const FlagCard = ({ top, left }: ITextProps) => {
     return (
       <Rnd
-        size={{ width: flagSize.width, height: flagSize.height }}
+        size={{
+          width: flagSize.width + '10px',
+          height: flagSize.height + '10px',
+        }}
         position={{ x: flagPosition.x, y: flagPosition.y }}
         onDragStop={(e, d) => {
           setFlagPosition({ x: d.x, y: d.y })
@@ -273,6 +264,8 @@ export const Card = () => {
       >
         <Image
           src={flag}
+          width={flagSize.width}
+          height={flagSize.height}
           alt="customImage"
           userSelect="none"
           draggable="false"
@@ -364,28 +357,32 @@ export const Card = () => {
           </Box>
         )}
 
-        {cardNumberLocal === 1 && (
-          <NumberCard top="52%" left="57%" fontSize="20px" />
-        )}
-
-        {cardValidityLocal === 1 && (
-          <ValidityCard
-            top="61%"
-            left="47%"
-            fontSize="20px"
-            fontSizeSmall="8px"
-          />
-        )}
-
-        {cardNameLocal === 1 && <NameCard top={70} left={20} fontSize="18px" />}
-
-        {customText && <CustomTextCard top="10%" left="10%" />}
-
-        {file && <ImageCard top="20%" left="50%" />}
-
         {flag && <FlagCard top="20%" left="50%" />}
-
         {flagValue !== 1 && <FlagFileCard top="20%" left="50%" />}
+
+        {files.map((file, index) => {
+          return (
+            <CustomImage
+              key={index}
+              file={file}
+              index={index}
+              resizeFile={(e) => resizeFile({ size: e, index })}
+              moveFile={(e) => moveFile({ position: e, index })}
+            />
+          )
+        })}
+
+        {projectsReady.map((project, index) => {
+          return (
+            <CustomImage
+              key={index}
+              file={project}
+              index={index}
+              resizeFile={(e) => resizeProjectsReady({ size: e, index })}
+              moveFile={(e) => moveProjectsReady({ position: e, index })}
+            />
+          )
+        })}
 
         <Box
           position="absolute"
@@ -401,6 +398,20 @@ export const Card = () => {
             data-html2canvas-ignore="true"
           />
         </Box>
+
+        {cardNumberLocal === 1 && (
+          <NumberCard top="52%" left="57%" fontSize="20px" />
+        )}
+        {cardValidityLocal === 1 && (
+          <ValidityCard
+            top="61%"
+            left="47%"
+            fontSize="20px"
+            fontSizeSmall="8px"
+          />
+        )}
+        {cardNameLocal === 1 && <NameCard top={70} left={20} fontSize="18px" />}
+        {customText && <CustomTextCard top="10%" left="10%" />}
       </CardSkeleton>
     )
   }

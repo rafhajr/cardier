@@ -45,8 +45,6 @@ export type CardContextData = {
   setTypoValue: (data: number) => void
   flagValue: number
   setFlagValue: (data: number) => void
-  file: string
-  setFile: (data: string) => void
   flag: string
   setFlag: (data: string) => void
   materialSelected: string

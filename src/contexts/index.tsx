@@ -5,6 +5,7 @@ import { QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import { queryClient } from 'src/lib/queryClient'
 import { CardContextProvider } from './cards'
+import { ImagesContextProvider } from './images'
 
 type AppProviderProps = {
   children: ReactNode
@@ -14,10 +15,12 @@ export function AppProvider({ children }: AppProviderProps) {
   return (
     <ChakraProvider theme={theme}>
       <CardContextProvider>
-        <QueryClientProvider client={queryClient}>
-          {children}
-          <ReactQueryDevtools />
-        </QueryClientProvider>
+        <ImagesContextProvider>
+          <QueryClientProvider client={queryClient}>
+            {children}
+            <ReactQueryDevtools />
+          </QueryClientProvider>
+        </ImagesContextProvider>
       </CardContextProvider>
     </ChakraProvider>
   )
