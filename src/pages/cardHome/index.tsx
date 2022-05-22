@@ -2,6 +2,7 @@ import { Card } from '@/components/Card'
 import { CardDesign } from '@/components/CardDesign'
 import { CardInformations } from '@/components/CardInformations'
 import { CardMetal } from '@/components/CardMetal'
+import { CardModels } from '@/components/CardModels'
 import { Header } from '@/components/Header'
 import { Menu } from '@/components/Menu'
 import { NavigationButtons } from '@/components/NavigationButtons'
@@ -46,7 +47,8 @@ const CardHome: React.FC = () => {
           <Box w="80%" alignSelf="center">
             {currentTab === 1 && <CardInformations />}
             {currentTab === 2 && <CardMetal />}
-            {currentTab === 3 && <CardDesign />}
+            {currentTab === 3 && <CardModels />}
+            {currentTab === 4 && <CardDesign />}
             <NavigationButtons />
           </Box>
         </Stack>

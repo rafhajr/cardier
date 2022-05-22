@@ -85,7 +85,20 @@ export const Menu = () => {
           onClick={() => setCurrentTab(3)}
           _focus={{ boxShadow: 'none' }}
         >
-          D
+          M
+        </Button>
+        <Button
+          size="md"
+          height="37px"
+          width="200px"
+          border="1px"
+          backgroundColor={currentTab === 4 ? '#1A1A1A' : '#fff'}
+          borderColor={currentTab === 4 ? '#1A1A1A' : '#C4C4C4'}
+          color={currentTab === 4 ? '#fff' : '#C4C4C4'}
+          onClick={() => setCurrentTab(4)}
+          _focus={{ boxShadow: 'none' }}
+        >
+          P
         </Button>
       </ButtonGroup>
     )
@@ -131,7 +144,20 @@ export const Menu = () => {
           onClick={() => setCurrentTab(3)}
           _focus={{ boxShadow: 'none' }}
         >
-          Design
+          Modelos
+        </Button>
+        <Button
+          size="md"
+          height="37px"
+          width="200px"
+          border="1px"
+          backgroundColor={currentTab === 4 ? '#1A1A1A' : '#fff'}
+          borderColor={currentTab === 4 ? '#1A1A1A' : '#C4C4C4'}
+          color={currentTab === 4 ? '#fff' : '#C4C4C4'}
+          onClick={() => setCurrentTab(4)}
+          _focus={{ boxShadow: 'none' }}
+        >
+          Personalização
         </Button>
       </ButtonGroup>
     )

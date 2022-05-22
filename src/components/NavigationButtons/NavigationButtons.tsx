@@ -37,7 +37,7 @@ export const NavigationButtons = () => {
     <Box pt="69px">
       {isWideVersion && (
         <Flex w="100%" maxW="450px" pb="5px">
-          {currentTab !== 3 && (
+          {currentTab !== 4 && (
             <>
               <ButtonStyled
                 label="Próximo"
@@ -48,7 +48,7 @@ export const NavigationButtons = () => {
               <Spacer />
             </>
           )}
-          {currentTab === 3 && (
+          {currentTab === 4 && (
             <ButtonStyled
               label="Solicitar cartão"
               bc="#E0BE74"
@@ -61,7 +61,7 @@ export const NavigationButtons = () => {
 
       {!isWideVersion && (
         <>
-          {currentTab !== 3 && (
+          {currentTab !== 4 && (
             <ButtonStyled
               label="Próximo"
               bc="#1A1A1A"
@@ -69,7 +69,7 @@ export const NavigationButtons = () => {
               onClick={() => setCurrentTab(currentTab + 1)}
             />
           )}
-          {currentTab === 3 && (
+          {currentTab === 4 && (
             <ButtonStyled
               label="Solicitar cartão"
               bc="#E0BE74"
