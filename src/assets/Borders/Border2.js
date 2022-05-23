@@ -1,7 +1,7 @@
 export const Border2 = ({ color: fill, w, h }) => (
   <svg
     width={w}
-    height={h}
+    // height={h}
     viewBox="0 0 214 134"
     fill={fill}
     xmlns="http://www.w3.org/2000/svg"

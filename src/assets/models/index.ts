@@ -8,6 +8,4 @@ images = importAll(require.context('./', false, /.(png|jpe?g|svg)$/))
 
 const arrUnique = Array.from(new Set(images))
 
-console.log(arrUnique)
-
 export default arrUnique

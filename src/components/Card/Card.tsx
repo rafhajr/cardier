@@ -349,11 +349,11 @@ export const Card = () => {
             )}
 
             {borderSelected === 2 && (
-              <Border2 w="434.5px" h="297px" color={textColor()} />
+              <Border2 w="440px" h="270px" color={textColor()} />
             )}
 
             {borderSelected === 3 && (
-              <Border3 w="395px" h="270px" color={textColor()} />
+              <Border3 w="395px" h="297px" color={textColor()} />
             )}
 
             {borderSelected === 4 && (
@@ -361,19 +361,19 @@ export const Card = () => {
             )}
 
             {borderSelected === 5 && (
-              <Border5 w="395px" h="270px" color={textColor()} />
+              <Border5 w="400px"  h="270px" color={textColor()} />
             )}
 
             {borderSelected === 6 && (
-              <Border6 w="395px" h="270px" color={textColor()} />
+              <Border6 w="440px" h="270px" color={textColor()} />
             )}
 
             {borderSelected === 7 && (
-              <Border7 w="395px" h="270px" color={textColor()} />
+              <Border7 w="420px" h="270px" color={textColor()} />
             )}
 
             {borderSelected === 8 && (
-              <Border8 w="395px" h="270px" color={textColor()} />
+              <Border8 w="420px"  h="270px" color={textColor()} />
             )}
           </Box>
         )}

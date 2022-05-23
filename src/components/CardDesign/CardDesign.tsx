@@ -2,9 +2,7 @@ import { DropZone } from '@/components/DropZone'
 import { Typography } from '@/components/Typography'
 import {
   Box,
-  Flex,
-  Grid,
-  Image,
+  Flex, Image,
   Spacer,
   Text,
   useBreakpointValue
@@ -102,7 +100,7 @@ export const CardDesign = () => {
   return (
     <Box w="100%" maxW="600px">
       <Box pt="10px">
-        <Typography text="Design" type="Title" />
+        <Typography text="Personalização" type="Title" />
       </Box>
 
       <Box pt="42px">
@@ -247,30 +245,6 @@ export const CardDesign = () => {
           </Box>
         </Box>
       )}
-
-      <Box pt="22px">
-        <Text>Designs prontos</Text>
-
-        <Box pt="18px">
-          <Grid
-            templateColumns="repeat(4, 1fr)"
-            h="200px"
-            w="100%"
-            maxW="400px"
-            gap="10px"
-            pt={19}
-          >
-            <BorderButton index={0} img="black" />
-            <BorderButton index={1} img="roseGold" />
-            <BorderButton index={2} img="rainbow" />
-            <BorderButton index={3} img="blackGold" />
-            <BorderButton index={4} img="gold" />
-            <BorderButton index={5} img="silver" />
-            <BorderButton index={6} img="white" />
-            <BorderButton index={7} img="black" />
-          </Grid>
-        </Box>
-      </Box>
     </Box>
   )
 }
