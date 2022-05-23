@@ -328,12 +328,7 @@ export const Card = () => {
             alignItems="center"
             justifyContent="center"
           >
-            <Image
-              src={model}
-              alt={model}
-              w="435px"
-              draggable="false"
-            />
+            <Image src={model} alt={model} w="435px" draggable="false" />
           </Box>
         )}
 
@@ -361,7 +356,7 @@ export const Card = () => {
             )}
 
             {borderSelected === 5 && (
-              <Border5 w="400px"  h="270px" color={textColor()} />
+              <Border5 w="400px" h="270px" color={textColor()} />
             )}
 
             {borderSelected === 6 && (
@@ -373,7 +368,7 @@ export const Card = () => {
             )}
 
             {borderSelected === 8 && (
-              <Border8 w="420px"  h="270px" color={textColor()} />
+              <Border8 w="420px" h="270px" color={textColor()} />
             )}
           </Box>
         )}
@@ -465,14 +460,17 @@ export const Card = () => {
               />
             </Box>
             <Box pl="5px">
-              <Text
-                color={textColor()}
-                fontSize="20px"
-                pt="12px"
-                userSelect="none"
-              >
-                555
-              </Text>
+              {(cardNumberLocal === 1 || cardNumberLocal === 2) ? (
+                <Text
+                  color={textColor()}
+                  fontSize="20px"
+                  pt="12px"
+                  userSelect="none"
+                  w="35px"
+                >
+                  555
+                </Text>
+              ): <Box pt="12px" w="35px"/> }
             </Box>
           </Flex>
 
