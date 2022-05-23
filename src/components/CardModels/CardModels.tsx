@@ -18,7 +18,7 @@ export const CardModels = () => {
           gap="29px"
           border="1px"
           borderColor="#A1A1A1"
-          borderRadius="5px"
+          borderRadius="24px"
           overflow="auto"
           p="22px"
           css={{
