@@ -1,7 +1,6 @@
-import imagesBlack from '@/assets/models/black'
-import imagesWhite from '@/assets/models/white'
+import components from '@/assets/models/black/script'
 import { Typography } from '@/components/Typography'
-import { Box, Grid, Img } from '@chakra-ui/react'
+import { Box, Grid } from '@chakra-ui/react'
 import React from 'react'
 import { useImages } from 'src/hooks'
 
@@ -34,27 +33,13 @@ export const CardModels = () => {
             },
           }}
         >
-          {imagesWhite &&
-            imagesWhite.map((img: any, index: number) => {
-              const returnImage = () => {
-                if (model !== img.default.src) {
-                  return img.default.src
-                }
-
-                const newImg: any = imagesBlack.find(
-                  (image: any) =>
-                    image.default.src.substring(0, 40) ===
-                    model.substring(0, 40)
-                )
-
-                return newImg?.default.src || ''
-              }
-
+          {components &&
+            components.map((Component: any, index: number) => {
               return (
                 <Box
                   key={index}
                   backgroundColor={
-                    model !== img.default.src ? 'black' : 'white'
+                    model !== index ? 'black' : 'white'
                   }
                   w="221px"
                   h="142px"
@@ -67,18 +52,19 @@ export const CardModels = () => {
                   justifySelf="center"
                   as="button"
                   onClick={() =>
-                    model !== img.default.src
-                      ? setModel(img.default.src)
-                      : setModel('')
+                    model !== index
+                      ? setModel(index)
+                      : setModel(-1)
                   }
                 >
-                  <Img
+                  <Component.Model
                     key={index}
-                    src={returnImage()}
-                    alt={returnImage()}
                     borderRadius="5px"
                     draggable="false"
                     w="100%"
+                    fill={
+                      model !== index ? 'white' : 'black'
+                    }
                   />
                 </Box>
               )

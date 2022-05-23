@@ -8,6 +8,7 @@ import {
   Border7,
   Border8
 } from '@/assets/Borders'
+import components from '@/assets/models/black/script'
 import { Box, Flex, Image, Spacer, Text, VStack } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { Rnd } from 'react-rnd'
@@ -317,7 +318,7 @@ export const Card = () => {
   const FrontCard = () => {
     return (
       <CardSkeleton isFront>
-        {model && (
+        {model > -1 && (
           <Box
             position="absolute"
             top="0%"
@@ -328,7 +329,9 @@ export const Card = () => {
             alignItems="center"
             justifyContent="center"
           >
-            <Image src={model} alt={model} w="435px" borderRadius="24px" draggable="false" />
+            {components.map((Component: any, index: number) => {
+              return index === model && <Component.Model fill={textColor()} key={index}/>
+            })}
           </Box>
         )}
 
@@ -460,7 +463,7 @@ export const Card = () => {
               />
             </Box>
             <Box pl="5px">
-              {(cardNumberLocal === 1 || cardNumberLocal === 2) ? (
+              {cardNumberLocal === 1 || cardNumberLocal === 2 ? (
                 <Text
                   color={textColor()}
                   fontSize="20px"
@@ -470,7 +473,9 @@ export const Card = () => {
                 >
                   555
                 </Text>
-              ): <Box pt="12px" w="35px"/> }
+              ) : (
+                <Box pt="12px" w="35px" />
+              )}
             </Box>
           </Flex>
 
