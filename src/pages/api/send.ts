@@ -39,7 +39,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       console.log(error)
       return res.status(400).json(error)
     } else {
-      // console.log('caceta')
       return res.status(202).json('sucesso')
     }
   })
