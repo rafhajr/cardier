@@ -1,5 +1,6 @@
 {
-  "name": "amaral",
+  "type": "module",
+  "name": "cardier",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "runner": "node  ./src/assets/models/black/script/runner.js"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.8.6",

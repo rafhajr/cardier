@@ -328,7 +328,7 @@ export const Card = () => {
             alignItems="center"
             justifyContent="center"
           >
-            <Image src={model} alt={model} w="435px" draggable="false" />
+            <Image src={model} alt={model} w="435px" borderRadius="24px" draggable="false" />
           </Box>
         )}
 

@@ -1,4 +1,5 @@
-import images from '@/assets/models'
+import imagesBlack from '@/assets/models/black'
+import imagesWhite from '@/assets/models/white'
 import { Typography } from '@/components/Typography'
 import { Box, Grid, Img } from '@chakra-ui/react'
 import React from 'react'
@@ -6,11 +7,6 @@ import { useImages } from 'src/hooks'
 
 export const CardModels = () => {
   const { model, setModel } = useImages()
-
-  const onChange = () => {
-
-  }
-
 
   return (
     <Box w="100%" maxW="600px">
@@ -38,12 +34,28 @@ export const CardModels = () => {
             },
           }}
         >
-          {images &&
-            images.map((img: any, index: number) => {
+          {imagesWhite &&
+            imagesWhite.map((img: any, index: number) => {
+              const returnImage = () => {
+                if (model !== img.default.src) {
+                  return img.default.src
+                }
+
+                const newImg: any = imagesBlack.find(
+                  (image: any) =>
+                    image.default.src.substring(0, 40) ===
+                    model.substring(0, 40)
+                )
+
+                return newImg?.default.src || ''
+              }
+
               return (
                 <Box
                   key={index}
-                  backgroundColor="black"
+                  backgroundColor={
+                    model !== img.default.src ? 'black' : 'white'
+                  }
                   w="221px"
                   h="142px"
                   alignItems="center"
@@ -54,14 +66,19 @@ export const CardModels = () => {
                   borderRadius="5px"
                   justifySelf="center"
                   as="button"
-                  onClick={() => model !== img.default.src ? setModel(img.default.src) : setModel('')}
+                  onClick={() =>
+                    model !== img.default.src
+                      ? setModel(img.default.src)
+                      : setModel('')
+                  }
                 >
                   <Img
                     key={index}
-                    src={img.default.src}
-                    alt={img.default.src}
+                    src={returnImage()}
+                    alt={returnImage()}
                     borderRadius="5px"
                     draggable="false"
+                    w="100%"
                   />
                 </Box>
               )
