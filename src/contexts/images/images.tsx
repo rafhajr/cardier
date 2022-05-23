@@ -14,6 +14,7 @@ const ImagesContext = createContext({} as ImagesContextData)
 function ImagesContextProvider({ children }: ImagesContextProviderProps) {
   const [files, setFiles] = useState<IFiles[]>([])
   const [projectsReady, setProjectsReady] = useState<IFiles[]>([])
+  const [model, setModel] = useState<string>('')
 
   const addFile = ({ e }: IAddFile) => {
     const image = {
@@ -109,6 +110,7 @@ function ImagesContextProvider({ children }: ImagesContextProviderProps) {
       deleteProjectsReady,
       resizeProjectsReady,
       moveProjectsReady,
+      model, setModel
     }),
     [
       files,
@@ -121,6 +123,7 @@ function ImagesContextProvider({ children }: ImagesContextProviderProps) {
       deleteProjectsReady,
       resizeProjectsReady,
       moveProjectsReady,
+      model, setModel
     ]
   )
 

@@ -76,6 +76,7 @@ export const Card = () => {
     projectsReady,
     resizeProjectsReady,
     moveProjectsReady,
+    model,
   } = useImages()
 
   const [textPosition, setTextPosition] = useState<IPosition>({ x: 50, y: 50 })
@@ -316,6 +317,26 @@ export const Card = () => {
   const FrontCard = () => {
     return (
       <CardSkeleton isFront>
+        {model && (
+          <Box
+            position="absolute"
+            top="0%"
+            left="0%"
+            w="435px"
+            h="275px"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Image
+              src={model}
+              alt={model}
+              w="435px"
+              draggable="false"
+            />
+          </Box>
+        )}
+
         {borderSelected !== 0 && (
           <Box
             position="absolute"

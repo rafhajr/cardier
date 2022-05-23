@@ -1,42 +1,16 @@
 import images from '@/assets/models'
 import { Typography } from '@/components/Typography'
 import { Box, Grid, Img } from '@chakra-ui/react'
-import React, { useState } from 'react'
-import { useCard, useImages } from 'src/hooks'
+import React from 'react'
+import { useImages } from 'src/hooks'
 
 export const CardModels = () => {
-  const {
-    customText,
-    setCustomText,
-    sizeValue,
-    setSizeValue,
-    typoValue,
-    setTypoValue,
-    flagValue,
-    setFlagValue,
-    flag,
-    setFlag,
-  } = useCard()
+  const { model, setModel } = useImages()
 
-  const {
-    files,
-    addFile,
-    deleteFile,
-    projectsReady,
-    addProjectsReady,
-    deleteProjectsReady,
-  } = useImages()
+  const onChange = () => {
 
-  const [selected, setSelected] = useState([
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ])
+  }
+
 
   return (
     <Box w="100%" maxW="600px">
@@ -79,12 +53,15 @@ export const CardModels = () => {
                   borderColor="#A1A1A1"
                   borderRadius="5px"
                   justifySelf="center"
+                  as="button"
+                  onClick={() => model !== img.default.src ? setModel(img.default.src) : setModel('')}
                 >
                   <Img
                     key={index}
                     src={img.default.src}
                     alt={img.default.src}
                     borderRadius="5px"
+                    draggable="false"
                   />
                 </Box>
               )

@@ -41,4 +41,6 @@ export type ImagesContextData = {
   deleteProjectsReady: (data: IDeleteFile) => void
   resizeProjectsReady: (data: IResizeFile) => void
   moveProjectsReady: (data: IMoveFile) => void
+  model: string,
+  setModel: (data: string) => void
 }
