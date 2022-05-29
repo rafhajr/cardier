@@ -20,8 +20,8 @@ export const CustomImage = ({ file, resizeFile, moveFile, index }: IImages) => {
   return (
     <Rnd
       size={{
-        width: (file.size.width || '100px') + '10px',
-        height: (file.size.height || '100px') + '10px',
+        width: file.size.width + '10px',
+        height: file.size.height + '10px',
       }}
       position={{ x: file.position.x || 0, y: file.position.y || 0 }}
       onDragStop={(e, d) => {
@@ -45,8 +45,8 @@ export const CustomImage = ({ file, resizeFile, moveFile, index }: IImages) => {
       }}
     >
       <Image
-        width={file.size.width || '100px'}
-        height={file.size.height || '100px'}
+        width={file.size.width}
+        height={file.size.height}
         src={file.file}
         alt="customImage"
         userSelect="none"

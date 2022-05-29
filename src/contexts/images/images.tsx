@@ -19,7 +19,7 @@ function ImagesContextProvider({ children }: ImagesContextProviderProps) {
   const addFile = ({ e }: IAddFile) => {
     const image = {
       file: e,
-      size: { width: '100px', height: '100px' },
+      size: { width: e.clientWidth, height: e.clientHeight },
       position: { x: 0, y: 0 },
     }
 
@@ -60,7 +60,7 @@ function ImagesContextProvider({ children }: ImagesContextProviderProps) {
   const addProjectsReady = ({ e }: IAddFile) => {
     const image = {
       file: e,
-      size: { width: '100px', height: '100px' },
+      size: { width: e.clientWidth, height: e.clientHeight },
       position: { x: 165, y: 85 },
     }
 
