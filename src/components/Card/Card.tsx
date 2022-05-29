@@ -81,6 +81,10 @@ export const Card = () => {
   } = useImages()
 
   const [textPosition, setTextPosition] = useState<IPosition>({ x: 50, y: 50 })
+  const [numberPosition, setNumberPosition] = useState<IPosition>({
+    x: 90,
+    y: 130,
+  })
   const [namePosition, setNamePosition] = useState<IPosition>({
     x: 100,
     y: 180,
@@ -139,25 +143,26 @@ export const Card = () => {
     )
   }
 
-  const NumberCard = ({ top, left, fontSize }: ITextProps) => {
+  const NumberCard = ({ top, left, fontSize, disabled }: INameProps) => {
     return (
-      <Box
-        position="absolute"
-        top={top}
-        left={left}
-        w="300px"
-        transform="translate(-50%, -50%)"
+      <Rnd
+        disableDragging={disabled}
+        enableResizing={false}
+        position={
+          disabled
+            ? { x: left, y: top }
+            : { x: numberPosition.x, y: numberPosition.y }
+        }
+        onDragStop={(e, d) => {
+          setNumberPosition({ x: d.x, y: d.y })
+        }}
+        bounds="parent"
+        className={disabled ? '' : 'card'}
       >
-        <Text
-          color={textColor()}
-          fontSize={fontSize}
-          draggable={false}
-          userSelect="none"
-          // w="500px"
-        >
+        <Text color={textColor()} fontSize={fontSize} userSelect="none">
           0000 0000 0000 0000
         </Text>
-      </Box>
+      </Rnd>
     )
   }
 
@@ -330,7 +335,11 @@ export const Card = () => {
             justifyContent="center"
           >
             {components.map((Component: any, index: number) => {
-              return index === model && <Component.Model fill={textColor()} key={index}/>
+              return (
+                index === model && (
+                  <Component.Model fill={textColor()} key={index} />
+                )
+              )
             })}
           </Box>
         )}
@@ -419,7 +428,7 @@ export const Card = () => {
         </Box>
 
         {cardNumberLocal === 1 && (
-          <NumberCard top="52%" left="57%" fontSize="20px" />
+          <NumberCard top={50} left={20}  fontSize="20px" />
         )}
         {cardValidityLocal === 1 && (
           <ValidityCard
@@ -491,7 +500,7 @@ export const Card = () => {
         </Box>
 
         {cardNumberLocal === 2 && (
-          <NumberCard top="60%" left="39%" fontSize="25px" />
+          <NumberCard top={140} left={20} fontSize="25px" disabled />
         )}
 
         {cardValidityLocal === 2 && (
