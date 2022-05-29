@@ -32,6 +32,17 @@ export const CustomImage = ({ file, resizeFile, moveFile, index }: IImages) => {
       }}
       bounds="parent"
       className="card"
+      lockAspectRatio={true}
+      enableResizing={{
+        top: false,
+        right: false,
+        bottom: false,
+        left: false,
+        topRight: true,
+        bottomRight: true,
+        bottomLeft: true,
+        topLeft: true,
+      }}
     >
       <Image
         width={file.size.width || '100px'}
