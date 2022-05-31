@@ -79,14 +79,14 @@ export const Prints = ({ printSelected, setPrintSelected }: IPrints) => {
       <Modal isOpen={modalDark} onClose={() => setModalDark(false)}>
         <ModalOverlay />
         <ModalContent >
-          <Image src="/ClarityModal/dark.jpeg" borderRadius="10px"/>
+          <Image src="/ClarityModal/dark.jpeg" borderRadius="10px" alt="dark"/>
         </ModalContent>
       </Modal>
 
       <Modal isOpen={modalClear} onClose={() => setModalClear(false)}>
         <ModalOverlay />
         <ModalContent >
-          <Image src="/ClarityModal/clear.jpeg" borderRadius="10px"/>
+          <Image src="/ClarityModal/clear.jpeg" borderRadius="10px" alt="clear"/>
         </ModalContent>
       </Modal>
     </VStack>
