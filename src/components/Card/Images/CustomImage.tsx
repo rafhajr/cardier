@@ -31,7 +31,7 @@ export const CustomImage = ({ file, resizeFile, moveFile, index }: IImages) => {
         resizeFile({ width: ref.style.width, height: ref.style.height }, index)
       }}
       bounds="parent"
-      className="card"
+      className="card border"
       lockAspectRatio={true}
       enableResizing={{
         top: false,

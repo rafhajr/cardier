@@ -6,6 +6,15 @@
 
 .card:hover {
   border: 5px;
-  border-color: #C4C4C4;
+  border-color: #c4c4c4;
   border-style: dashed;
 }
+
+.scroll-container {
+  height: 112px;
+  width: 479px;
+  border: solid 1px #c4c4c4;
+  border-radius: 5px;
+  padding: 10px;
+}
+
