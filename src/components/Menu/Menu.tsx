@@ -22,7 +22,7 @@ const MenuQuestionsButton = () => {
       color={'#1A1A1A'}
       onClick={() =>
         window.open(
-          'https://api.whatsapp.com/send/?phone=554891901224&text&app_absent=0',
+          'https://wa.me/554832261543',
           '_blank',
           'noopener,noreferrer'
         )
