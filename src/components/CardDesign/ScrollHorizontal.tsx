@@ -1,4 +1,4 @@
-import { Box, Image } from '@chakra-ui/react'
+import { Box, Image, useBreakpointValue } from '@chakra-ui/react'
 import React from 'react'
 import ScrollContainer from 'react-indiana-drag-scroll'
 interface IBorderScroll {
@@ -7,8 +7,15 @@ interface IBorderScroll {
 }
 
 export const ScrollHorizontal = ({ images, addFile }: IBorderScroll) => {
+  const isWideVersion = useBreakpointValue({ base: false, lg: true })
+
   return (
-    <ScrollContainer horizontal hideScrollbars className="scroll-container">
+    <ScrollContainer
+      horizontal
+      hideScrollbars
+      className="scroll-container"
+      style={{ width: isWideVersion ? '480px' : '300px' }}
+    >
       <Box
         height="100%"
         display="flex"

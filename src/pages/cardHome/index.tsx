@@ -39,12 +39,12 @@ const CardHome: React.FC = () => {
           direction={isWideVersion ? 'row' : 'column'}
           align="center"
         >
-          <Box alignSelf="flex-start" pt="10px">
+          <Box alignSelf={isWideVersion ? 'flex-start' : 'center'} pt="10px">
             <Card />
           </Box>
 
           {!isWideVersion && <Menu />}
-          <Box w="80%" alignSelf="center">
+          <Box alignSelf="center">
             {currentTab === 1 && <CardInformations />}
             {currentTab === 2 && <CardMetal />}
             {currentTab === 3 && <CardModels />}

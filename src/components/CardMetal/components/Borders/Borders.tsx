@@ -8,7 +8,13 @@ import {
   Border7,
   Border8
 } from '@/assets/Borders'
-import { Button, Grid, GridItem, Text } from '@chakra-ui/react'
+import {
+  Button,
+  Grid,
+  GridItem,
+  Text,
+  useBreakpointValue
+} from '@chakra-ui/react'
 import React from 'react'
 
 interface IBorderButton {
@@ -24,6 +30,8 @@ interface IBorders {
 }
 
 export const Borders = ({ borderSelected, setBorderSelected }: IBorders) => {
+  const isWideVersion = useBreakpointValue({ base: false, lg: true })
+
   const BorderButton = ({
     borderSelected,
     setBorderSelected,
@@ -113,8 +121,7 @@ export const Borders = ({ borderSelected, setBorderSelected }: IBorders) => {
 
   return (
     <Grid
-      templateColumns="repeat(4, 1fr)"
-      h="200px"
+      templateColumns={`repeat(${isWideVersion ? '4' : '2'}, 1fr)`}
       w="100%"
       maxW="400px"
       gap="10px"

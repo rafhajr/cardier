@@ -2,12 +2,7 @@ import { DropZone } from '@/components/DropZone'
 import { Typography } from '@/components/Typography'
 import images from '@/utils/importElements'
 import flags from '@/utils/importFlags'
-import {
-  Box,
-  Flex, Spacer,
-  Text,
-  useBreakpointValue
-} from '@chakra-ui/react'
+import { Box, Spacer, Stack, Text, useBreakpointValue } from '@chakra-ui/react'
 import React from 'react'
 import { useCard, useImages } from 'src/hooks'
 import { dataSizes, dataTypos } from '../../constants/index'
@@ -29,7 +24,7 @@ export const CardDesign = () => {
 
   const isWideVersion = useBreakpointValue({ base: false, lg: true })
   return (
-    <Box w="100%" maxW="600px">
+    <Box maxW="600px">
       <Box pt="10px">
         <Typography text="Personalização" type="Title" />
       </Box>
@@ -61,7 +56,7 @@ export const CardDesign = () => {
           <DropZone
             index={69}
             pt="0"
-            w="100%"
+            // w="100%"
             maxW="480px"
             h="74px"
             maxH="74px"
@@ -83,13 +78,16 @@ export const CardDesign = () => {
         <Text pb="14px" color="#A9A9A9">
           Bandeiras
         </Text>
-        <ScrollHorizontal images={flags} addFile={addFile}/>
+        <ScrollHorizontal images={flags} addFile={addFile} />
       </Box>
 
-      <Box pt="42px" w="485px">
+      <Box pt="42px" maxW="485px">
         <Text>Adicionar Texto</Text>
-
-        <Flex pt="18px" w="100%">
+        <Stack
+          pt="18px"
+          spacing="2%"
+          direction={isWideVersion ? 'row' : 'column'}
+        >
           <Box>
             <Typography text="Texto" type="Subtitle" />
             <Input
@@ -123,7 +121,7 @@ export const CardDesign = () => {
               setValue={setTypoValue}
             />
           </Box>
-        </Flex>
+        </Stack>
       </Box>
     </Box>
   )

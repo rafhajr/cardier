@@ -20,7 +20,7 @@ export const CardInformations = () => {
   const title = 'Nome do cartão(' + cardName.length + '/26)'
 
   return (
-    <Box w="100%" maxW="600px">
+    <Box  maxW="600px">
       <Box pt="10px">
         <Typography text="Informações" type="Title" />
       </Box>

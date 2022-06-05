@@ -47,7 +47,7 @@ export const Materials = ({
   }
 
   return (
-    <Grid templateColumns={isWideVersion ? "repeat(4, 1fr)" : "repeat(4, 1fr)"} gap={5} pt={23}>
+    <Grid templateColumns={isWideVersion ? "repeat(4, 1fr)" : "repeat(2, 1fr)"} gap={5} pt={23}>
       <Material
         materialSelected={materialSelected}
         setMaterialSelected={setMaterialSelected}

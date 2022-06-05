@@ -1,20 +1,20 @@
 import components from '@/assets/models/black/script'
 import { Typography } from '@/components/Typography'
-import { Box, Grid } from '@chakra-ui/react'
+import { Box, Grid, useBreakpointValue } from '@chakra-ui/react'
 import React from 'react'
 import { useImages } from 'src/hooks'
 
 export const CardModels = () => {
   const { model, setModel } = useImages()
-
+  const isWideVersion = useBreakpointValue({ base: false, lg: true })
   return (
     <Box w="100%" maxW="600px">
       <Box pt="10px">
         <Typography text="Modelos prontos" type="Title" />
         <Grid
-          templateColumns="repeat(2, 1fr)"
+          templateColumns={`repeat(${isWideVersion ? 2 : 1}, 1fr)`}
           h="455px"
-          w="590px"
+          maxW="590px"
           gap="29px"
           border="1px"
           borderColor="#A1A1A1"

@@ -45,6 +45,8 @@ export const CustomImage = ({ file, resizeFile, moveFile, index }: IImages) => {
       }}
     >
       <Image
+        maxW="435px"
+        maxH="275px"
         width={file.size.width}
         height={file.size.height}
         src={file.file}

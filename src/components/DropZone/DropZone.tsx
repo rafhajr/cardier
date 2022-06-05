@@ -4,7 +4,7 @@ import { useDropzone } from 'react-dropzone'
 import { HiOutlinePlusSm, HiTrash } from 'react-icons/hi'
 
 interface IDropZone {
-  w: string
+  w?: string
   h: string
   maxW: string
   maxH: string
