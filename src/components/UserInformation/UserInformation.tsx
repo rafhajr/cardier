@@ -58,8 +58,8 @@ export const UserInformation = () => {
   }
 
   return (
-    <Modal isOpen={isOpen} onClose={() => handleClose()}>
-      <ModalOverlay />
+    <Modal isCentered isOpen={isOpen} onClose={() => handleClose()}>
+      <ModalOverlay width="100%" height="100%"/>
       <ModalContent h="600px">
         <ModalHeader>Fazer pedido</ModalHeader>
 

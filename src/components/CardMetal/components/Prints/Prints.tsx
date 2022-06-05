@@ -80,15 +80,19 @@ export const Prints = ({ printSelected, setPrintSelected }: IPrints) => {
         setModal={setModalClear}
       />
 
-      <Modal isOpen={modalDark} onClose={() => setModalDark(false)}>
-        <ModalOverlay />
+      <Modal isCentered isOpen={modalDark} onClose={() => setModalDark(false)}>
+        <ModalOverlay width="100%" height="100%" />
         <ModalContent>
           <Image src="/ClarityModal/dark.jpeg" borderRadius="10px" alt="dark" />
         </ModalContent>
       </Modal>
 
-      <Modal isOpen={modalClear} onClose={() => setModalClear(false)}>
-        <ModalOverlay />
+      <Modal
+        isCentered
+        isOpen={modalClear}
+        onClose={() => setModalClear(false)}
+      >
+        <ModalOverlay width="100%" height="100%" />
         <ModalContent>
           <Image
             src="/ClarityModal/clear.jpeg"

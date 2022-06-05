@@ -18,3 +18,7 @@
   border-radius: 5px;
   padding: 10px;
 }
+
+.chakra-modal__content-container {
+  width: 100% !important;
+}
