@@ -34,6 +34,16 @@ function CardContextProvider({ children }: CardContextProviderProps) {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [isSuccess, setIsSuccess] = useState<boolean>(false)
 
+  const pageCodes: Record<string, string> = {
+    blackGold: '1101',
+    black: '1275',
+    white: '1276',
+    gold: '1277',
+    roseGold: '1278',
+    silver: '1279',
+    rainbow: '1280',
+  }
+
   const orderCard = async (): Promise<void> => {
     setIsLoading(true)
     const frontCardImage = await takeScreenshot(frontCardRef.current)
@@ -86,6 +96,12 @@ function CardContextProvider({ children }: CardContextProviderProps) {
       })
 
       setIsSuccess(true)
+      window.open(
+        `https://usecardier.com.br/finalizar-compra/?add-to-cart=${
+          pageCodes[materialSelected] || '1101'
+        }`,
+        '_self'
+      )
     } catch (err) {
       console.log(err)
       setIsSuccess(false)
