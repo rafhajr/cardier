@@ -23,7 +23,7 @@ const CardHome: React.FC = () => {
   const isWideVersion = useBreakpointValue({ base: false, lg: true })
 
   return (
-    <>
+    <Box minWidth="600px">
       <Header />
       {isWideVersion && <Menu />}
       <Flex align="center" justify="center" w="100%">
@@ -38,6 +38,7 @@ const CardHome: React.FC = () => {
           spacing="5%"
           direction={isWideVersion ? 'row' : 'column'}
           align="center"
+          // justifyContent="center"
         >
           <Box alignSelf={isWideVersion ? 'flex-start' : 'center'} pt="10px">
             <Card />
@@ -54,7 +55,7 @@ const CardHome: React.FC = () => {
         </Stack>
       </Flex>
       <UserInformation />
-    </>
+    </Box>
   )
 }
 

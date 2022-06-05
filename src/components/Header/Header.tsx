@@ -9,7 +9,7 @@ export const Header = () => {
   return (
     <Flex
       as="header"
-      w={isWideVersion ? "100" : "105%"}
+      // w={isWideVersion ? "100%" : "105%"}
       // maxWidth={1480}
       h="60px"
       mx="auto"
