@@ -9,7 +9,17 @@ export const dataSizes = [
 ]
 
 export const dataTypos = [
-  { value: 1, label: 'Mont Serrat' },
+  { value: 1, label: 'Roboto' },
+  { value: 2, label: 'MontSerrat Alternates' },
+  { value: 3, label: 'Oswald' },
+  { value: 4, label: 'MerriWeather' },
+  { value: 5, label: 'Arvo' },
+  { value: 6, label: 'Teko' },
+  { value: 7, label: 'Quantico' },
+  { value: 8, label: 'Grape Nuts' },
+  { value: 9, label: 'Lobster' },
+  { value: 10, label: 'Dancing Script' },
+  { value: 11, label: 'Cookie' },
 ]
 
 export const dataFlags = [

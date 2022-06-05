@@ -217,11 +217,17 @@ export const Card = () => {
   const CustomTextCard = ({ top, left }: ITextProps) => {
     const getFonts = () => {
       const fontFamily: Record<number, string> = {
-        1: 'cursive',
-        2: 'monospace',
-        3: 'serif',
-        4: 'initial',
-        5: 'unset',
+        1: 'Roboto, sans-serif',
+        2: 'Montserrat Alternates, sans-serif',
+        3: 'Oswald, sans-serif',
+        4: 'Merriweather, serif',
+        5: 'Arvo, serif',
+        6: 'Teko, sans-serif',
+        7: 'Quantico, sans-serif',
+        8: 'Grape Nuts, cursive',
+        9: 'Lobster, cursive',
+        10: 'Dancing Script, cursive',
+        11: 'Cookie, cursive',
       }
       return fontFamily[typoValue] || 'cursive'
     }
