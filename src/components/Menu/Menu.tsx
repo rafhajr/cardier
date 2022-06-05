@@ -44,63 +44,65 @@ export const Menu = () => {
 
   const MenuMobileTab = () => {
     return (
-      <ButtonGroup isAttached>
-        <Button
-          // size="md"
-          height="37px"
-          width="100%"
-          maxW="200px"
-          border="1px"
-          backgroundColor={currentTab === 1 ? '#1A1A1A' : '#fff'}
-          borderColor={currentTab === 1 ? '#1A1A1A' : '#C4C4C4'}
-          color={currentTab === 1 ? '#fff' : '#C4C4C4'}
-          onClick={() => setCurrentTab(1)}
-          _focus={{ boxShadow: 'none' }}
-        >
-          I
-        </Button>
-        <Button
-          // size="md"
-          height="37px"
-          width="100%"
-          maxW="200px"
-          border="1px"
-          backgroundColor={currentTab === 2 ? '#1A1A1A' : '#fff'}
-          borderColor={currentTab === 2 ? '#1A1A1A' : '#C4C4C4'}
-          color={currentTab === 2 ? '#fff' : '#C4C4C4'}
-          onClick={() => setCurrentTab(2)}
-          _focus={{ boxShadow: 'none' }}
-        >
-          M
-        </Button>
-        <Button
-          // size="md"
-          height="37px"
-          width="100%"
-          maxW="200px"
-          border="1px"
-          backgroundColor={currentTab === 3 ? '#1A1A1A' : '#fff'}
-          borderColor={currentTab === 3 ? '#1A1A1A' : '#C4C4C4'}
-          color={currentTab === 3 ? '#fff' : '#C4C4C4'}
-          onClick={() => setCurrentTab(3)}
-          _focus={{ boxShadow: 'none' }}
-        >
-          M
-        </Button>
-        <Button
-          size="md"
-          height="37px"
-          width="200px"
-          border="1px"
-          backgroundColor={currentTab === 4 ? '#1A1A1A' : '#fff'}
-          borderColor={currentTab === 4 ? '#1A1A1A' : '#C4C4C4'}
-          color={currentTab === 4 ? '#fff' : '#C4C4C4'}
-          onClick={() => setCurrentTab(4)}
-          _focus={{ boxShadow: 'none' }}
-        >
-          P
-        </Button>
-      </ButtonGroup>
+      <Stack spacing="0px">
+        <ButtonGroup isAttached>
+          <Button
+            // size="md"
+            height="37px"
+            width="150px"
+            border="1px"
+            backgroundColor={currentTab === 1 ? '#1A1A1A' : '#fff'}
+            borderColor={currentTab === 1 ? '#1A1A1A' : '#C4C4C4'}
+            color={currentTab === 1 ? '#fff' : '#C4C4C4'}
+            onClick={() => setCurrentTab(1)}
+            _focus={{ boxShadow: 'none' }}
+          >
+            Informações
+          </Button>
+          <Button
+            // size="md"
+            height="37px"
+            width="150px"
+            maxW="200px"
+            border="1px"
+            backgroundColor={currentTab === 2 ? '#1A1A1A' : '#fff'}
+            borderColor={currentTab === 2 ? '#1A1A1A' : '#C4C4C4'}
+            color={currentTab === 2 ? '#fff' : '#C4C4C4'}
+            onClick={() => setCurrentTab(2)}
+            _focus={{ boxShadow: 'none' }}
+          >
+            Metal
+          </Button>
+        </ButtonGroup>
+        <ButtonGroup isAttached>
+          <Button
+            height="37px"
+            width="150px"
+            maxW="200px"
+            border="1px"
+            backgroundColor={currentTab === 3 ? '#1A1A1A' : '#fff'}
+            borderColor={currentTab === 3 ? '#1A1A1A' : '#C4C4C4'}
+            color={currentTab === 3 ? '#fff' : '#C4C4C4'}
+            onClick={() => setCurrentTab(3)}
+            _focus={{ boxShadow: 'none' }}
+          >
+            Modelos
+          </Button>
+          <Button
+            size="md"
+            height="37px"
+            width="150px"
+            border="1px"
+            backgroundColor={currentTab === 4 ? '#1A1A1A' : '#fff'}
+            borderColor={currentTab === 4 ? '#1A1A1A' : '#C4C4C4'}
+            color={currentTab === 4 ? '#fff' : '#C4C4C4'}
+            onClick={() => setCurrentTab(4)}
+            _focus={{ boxShadow: 'none' }}
+          >
+            Personalização
+          </Button>
+        </ButtonGroup>
+      </Stack>
     )
   }
 
