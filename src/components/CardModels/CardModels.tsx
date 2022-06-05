@@ -1,6 +1,6 @@
 import components from '@/assets/models/black/script'
 import { Typography } from '@/components/Typography'
-import { Box, Grid, useBreakpointValue } from '@chakra-ui/react'
+import { Box, Grid, Text, useBreakpointValue } from '@chakra-ui/react'
 import React from 'react'
 import { useImages } from 'src/hooks'
 
@@ -33,14 +33,28 @@ export const CardModels = () => {
             },
           }}
         >
+          <Box
+            backgroundColor={model !== -1 ? 'black' : 'white'}
+            w="221px"
+            h="142px"
+            alignItems="center"
+            display="flex"
+            justifyContent="center"
+            border="1px"
+            borderColor="#A1A1A1"
+            borderRadius="5px"
+            justifySelf="center"
+            as="button"
+            onClick={() => setModel(-1)}
+          >
+            <Text color={model !== -1 ? 'white' : 'black'}>NENHUM</Text>
+          </Box>
           {components &&
             components.map((Component: any, index: number) => {
               return (
                 <Box
                   key={index}
-                  backgroundColor={
-                    model !== index ? 'black' : 'white'
-                  }
+                  backgroundColor={model !== index ? 'black' : 'white'}
                   w="221px"
                   h="142px"
                   alignItems="center"
@@ -52,9 +66,7 @@ export const CardModels = () => {
                   justifySelf="center"
                   as="button"
                   onClick={() =>
-                    model !== index
-                      ? setModel(index)
-                      : setModel(-1)
+                    model !== index ? setModel(index) : setModel(-1)
                   }
                 >
                   <Component.Model
@@ -62,9 +74,7 @@ export const CardModels = () => {
                     borderRadius="5px"
                     draggable="false"
                     w="100%"
-                    fill={
-                      model !== index ? 'white' : 'black'
-                    }
+                    fill={model !== index ? 'white' : 'black'}
                   />
                 </Box>
               )
