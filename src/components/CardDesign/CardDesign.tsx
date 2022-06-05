@@ -24,7 +24,7 @@ export const CardDesign = () => {
 
   const isWideVersion = useBreakpointValue({ base: false, lg: true })
   return (
-    <Box maxW="600px">
+    <Box minW="400px" maxW="600px">
       <Box pt="10px">
         <Typography text="Personalização" type="Title" />
       </Box>
@@ -100,27 +100,57 @@ export const CardDesign = () => {
             />
           </Box>
           <Spacer />
-          <Box>
-            <Typography text="Tamanho" type="Subtitle" />
-            <Select
-              w="100%"
-              maxW="100px"
-              options={dataSizes}
-              value={sizeValue}
-              setValue={setSizeValue}
-            />
-          </Box>
-          <Spacer />
-          <Box>
-            <Typography text="Tipografia" type="Subtitle" />
-            <Select
-              w="100%"
-              maxW="150px"
-              options={dataTypos}
-              value={typoValue}
-              setValue={setTypoValue}
-            />
-          </Box>
+
+          {isWideVersion && (
+            <>
+              <Box>
+                <Typography text="Tamanho" type="Subtitle" />
+                <Select
+                  w="100%"
+                  maxW="100px"
+                  options={dataSizes}
+                  value={sizeValue}
+                  setValue={setSizeValue}
+                />
+              </Box>
+              <Spacer />
+              <Box>
+                <Typography text="Tipografia" type="Subtitle" />
+                <Select
+                  w="100%"
+                  maxW="150px"
+                  options={dataTypos}
+                  value={typoValue}
+                  setValue={setTypoValue}
+                />
+              </Box>
+            </>
+          )}
+
+          {!isWideVersion && (
+            <Stack pt="18px" spacing="10%" direction="row">
+              <Box>
+                <Typography text="Tamanho" type="Subtitle" />
+                <Select
+                  w="100%"
+                  maxW="100px"
+                  options={dataSizes}
+                  value={sizeValue}
+                  setValue={setSizeValue}
+                />
+              </Box>
+              <Box>
+                <Typography text="Tipografia" type="Subtitle" />
+                <Select
+                  w="100%"
+                  maxW="150px"
+                  options={dataTypos}
+                  value={typoValue}
+                  setValue={setTypoValue}
+                />
+              </Box>
+            </Stack>
+          )}
         </Stack>
       </Box>
     </Box>

@@ -14,7 +14,7 @@ export const ScrollHorizontal = ({ images, addFile }: IBorderScroll) => {
       horizontal
       hideScrollbars
       className="scroll-container"
-      style={{ width: isWideVersion ? '480px' : '300px' }}
+      style={{ width: isWideVersion ? '480px' : '400px' }}
     >
       <Box
         height="100%"

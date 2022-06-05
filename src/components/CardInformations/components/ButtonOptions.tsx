@@ -35,7 +35,7 @@ const ButtonOption = ({ label, selected, onClick, icon }: IButton) => {
 
 export const ButtonOptions = ({ value, setValue }: IButtonOptions) => {
   return (
-    <Stack direction={['column', 'row']} spacing="18px" pt="20px">
+    <Stack direction={[ 'row']} spacing="18px" pt="20px">
       <ButtonOption
         selected={value === 1}
         onClick={() => setValue(1)}

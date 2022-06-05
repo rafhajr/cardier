@@ -21,7 +21,7 @@ export const CardMetal = () => {
   const isWideVersion = useBreakpointValue({ base: false, lg: true })
 
   return (
-    <Box maxW="600px">
+    <Box minW="400px" maxW="600px">
       <Box pt="10px">
         <Typography text="Metal" type="Title" />
       </Box>

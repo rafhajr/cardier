@@ -121,7 +121,7 @@ export const Borders = ({ borderSelected, setBorderSelected }: IBorders) => {
 
   return (
     <Grid
-      templateColumns={`repeat(${isWideVersion ? '4' : '2'}, 1fr)`}
+      templateColumns={`repeat(${isWideVersion ? '4' : '3'}, 1fr)`}
       w="100%"
       maxW="400px"
       gap="10px"

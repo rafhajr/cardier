@@ -5,6 +5,7 @@ import {
   Modal,
   ModalContent,
   ModalOverlay,
+  useBreakpointValue,
   VStack
 } from '@chakra-ui/react'
 import React, { useState } from 'react'
@@ -24,6 +25,8 @@ interface IPrints {
 }
 
 export const Prints = ({ printSelected, setPrintSelected }: IPrints) => {
+  const isWideVersion = useBreakpointValue({ base: false, lg: true })
+
   const [modalDark, setModalDark] = useState(false)
   const [modalClear, setModalClear] = useState(false)
   const PrintButton = ({
@@ -37,8 +40,9 @@ export const Prints = ({ printSelected, setPrintSelected }: IPrints) => {
     return (
       <Box display="flex" alignItems="center">
         <Button
-          w="131px"
+          w={isWideVersion ? '131px' : '300px'}
           h="40px"
+          maxW="600px"
           borderRadius="5px"
           border="1px"
           pr="20px"
@@ -78,15 +82,19 @@ export const Prints = ({ printSelected, setPrintSelected }: IPrints) => {
 
       <Modal isOpen={modalDark} onClose={() => setModalDark(false)}>
         <ModalOverlay />
-        <ModalContent >
-          <Image src="/ClarityModal/dark.jpeg" borderRadius="10px" alt="dark"/>
+        <ModalContent>
+          <Image src="/ClarityModal/dark.jpeg" borderRadius="10px" alt="dark" />
         </ModalContent>
       </Modal>
 
       <Modal isOpen={modalClear} onClose={() => setModalClear(false)}>
         <ModalOverlay />
-        <ModalContent >
-          <Image src="/ClarityModal/clear.jpeg" borderRadius="10px" alt="clear"/>
+        <ModalContent>
+          <Image
+            src="/ClarityModal/clear.jpeg"
+            borderRadius="10px"
+            alt="clear"
+          />
         </ModalContent>
       </Modal>
     </VStack>

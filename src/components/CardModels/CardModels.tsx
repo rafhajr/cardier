@@ -8,11 +8,12 @@ export const CardModels = () => {
   const { model, setModel } = useImages()
   const isWideVersion = useBreakpointValue({ base: false, lg: true })
   return (
-    <Box w="100%" maxW="600px">
+    <Box w="100%" minW="400px" maxW="600px">
       <Box pt="10px">
         <Typography text="Modelos prontos" type="Title" />
         <Grid
-          templateColumns={`repeat(${isWideVersion ? 2 : 1}, 1fr)`}
+          // templateColumns={`repeat(${isWideVersion ? 2 : 1}, 1fr)`}
+          templateColumns={`repeat(2 , 1fr)`}
           h="455px"
           maxW="590px"
           gap="29px"

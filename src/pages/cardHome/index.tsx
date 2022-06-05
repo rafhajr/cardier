@@ -45,7 +45,7 @@ const CardHome: React.FC = () => {
           </Box>
 
           {!isWideVersion && <Menu />}
-          <Box alignSelf="center">
+          <Box alignSelf="center" pb="100px">
             {currentTab === 1 && <CardInformations />}
             {currentTab === 2 && <CardMetal />}
             {currentTab === 3 && <CardModels />}

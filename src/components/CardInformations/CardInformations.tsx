@@ -20,7 +20,7 @@ export const CardInformations = () => {
   const title = 'Nome do cartão(' + cardName.length + '/26)'
 
   return (
-    <Box  maxW="600px">
+    <Box  minW="400px" maxW="600px">
       <Box pt="10px">
         <Typography text="Informações" type="Title" />
       </Box>
@@ -30,7 +30,7 @@ export const CardInformations = () => {
         <Input
           placeholder="Nome aqui"
           w="100%"
-          maxW="479px"
+          maxW="600px"
           value={cardName}
           setValue={setCardName}
           maxLenght={26}
